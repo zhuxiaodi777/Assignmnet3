@@ -4,10 +4,28 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author judy
  */
 public class UserHistory {
+    
+    private ArrayList<UserProfile> history;
+    
+    public UserHistory(){
+        
+        this.history= new ArrayList<UserProfile>();
+        
+    }
+
+    public ArrayList<UserProfile> getHistory() {
+        return history;
+    }
+
+    public void setHistory(ArrayList<UserProfile> history) {
+        this.history = history;
+    }
     
 }
