@@ -1,22 +1,22 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.user;
 
-import model.UserHistory;
 import model.UserProfile;
+import model.UserHistory;
 
 /**
  *
  * @author judy
  */
-public class UserCreate extends javax.swing.JFrame {
+public class UserCreate extends javax.swing.JPanel {
 
     /**
      * Creates new form UserCreate1
      */
-    UserHistory history;
+    UserHistory userHistory = new UserHistory();
     public UserCreate() {
         initComponents();
     }
@@ -30,24 +30,28 @@ public class UserCreate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblAge = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtEmailAddress1 = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
+        txtEmployeeId = new javax.swing.JTextField();
         txtEmailAddress = new javax.swing.JTextField();
+        lblEmailAddress1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
+        txtGender = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         lblEmployeeId = new javax.swing.JLabel();
         lblEmailAddress = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        lblAge = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        txtEmailAddress1 = new javax.swing.JTextField();
-        txtEmployeeId = new javax.swing.JTextField();
-        lblEmailAddress1 = new javax.swing.JLabel();
-        txtGender = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblAge.setText("Age:");
+
+        lblName.setText("Name:");
 
         lblGender.setText("Gender:");
+
+        lblEmailAddress1.setText("password");
 
         btnSave.setText("Register");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -65,14 +69,8 @@ public class UserCreate extends javax.swing.JFrame {
 
         lblEmailAddress.setText("Email Address:");
 
-        lblAge.setText("Age:");
-
-        lblName.setText("Name:");
-
-        lblEmailAddress1.setText("password");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -87,7 +85,7 @@ public class UserCreate extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(281, 281, 281)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                                     .addComponent(txtEmployeeId, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,10 +139,8 @@ public class UserCreate extends javax.swing.JFrame {
                     .addComponent(txtEmailAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -179,7 +175,7 @@ public class UserCreate extends javax.swing.JFrame {
         //        String emailAddress = txtEmailAddress.getText();
         //        String photo = txtPhoto.getText();
 
-        UserProfile up = history.addNewUser();
+        UserProfile up = userHistory.addNewUser();
 
         up.setName(name);
         up.setUserId(employeeId);
@@ -195,41 +191,6 @@ public class UserCreate extends javax.swing.JFrame {
         txtEmailAddress.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserCreate().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;

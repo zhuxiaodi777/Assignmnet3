@@ -142,8 +142,8 @@ public class UserLogin extends javax.swing.JPanel {
         if (useremail.contains("1") && password.contains("1")
         ) {
             
-            UserView ms = new UserView();
-            userProcessContainer.add("ManageSupplierAdministrative", ms);
+            UserView uv = new UserView(userProcessContainer, userHistory);
+            userProcessContainer.add("ManageSupplierAdministrative", uv);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
             txtEmail.setText("");
@@ -181,7 +181,9 @@ public class UserLogin extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         UserCreate uc = new UserCreate();
-        uc.setVisible(true);
+        userProcessContainer.add("ManageSupplierAdministrative", uc);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnRegisterActionPerformed
 
