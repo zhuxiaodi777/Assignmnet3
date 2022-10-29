@@ -5,6 +5,11 @@
 
 package ui.user;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.UserHistory;
+
 /**
  *
  * @author judy
@@ -12,8 +17,11 @@ package ui.user;
 public class UserLogin extends javax.swing.JPanel {
 
     /** Creates new form UserLogin */
-    public UserLogin() {
+    private JPanel userProcessContainer;
+    private UserHistory userHistory;
+    public UserLogin(JPanel userProcessContainer,UserHistory userHistory) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
     }
 
     /** This method is called from within the constructor to
@@ -133,14 +141,19 @@ public class UserLogin extends javax.swing.JPanel {
         String password = jpwpass.getText();
         if (useremail.contains("1") && password.contains("1")
         ) {
+            
+            UserView ms = new UserView();
+            userProcessContainer.add("ManageSupplierAdministrative", ms);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
             txtEmail.setText("");
             jpwpass.setText("");
-            UserView uv = new UserView();
-            uv.setVisible(true);
-
+            
+//            UserView uv = new UserView();
+//            uv.setVisible(true);
         }
         else {
-//            JOptionPane.showMessageDialog(null,"Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
 
         }
 
