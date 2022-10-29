@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package doctor.UI;
+import model.DoctorHistory;
+import model.DoctorProfile;
 
 /**
  *
@@ -13,8 +15,12 @@ public class DoctorMainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form DoctorMainJFrame
      */
+    DoctorProfile doctor;
+    DoctorHistory history;
     public DoctorMainJFrame() {
         initComponents();
+        history= new DoctorHistory();
+        
     }
 
     /**
@@ -35,8 +41,15 @@ public class DoctorMainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        SignUpBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SignUpBtn.setText("Sign Up");
+        SignUpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUpBtnActionPerformed(evt);
+            }
+        });
 
+        SignInBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         SignInBtn.setText("Sign In");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
@@ -44,7 +57,7 @@ public class DoctorMainJFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(0, 24, Short.MAX_VALUE)
+                .add(0, 21, Short.MAX_VALUE)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, SignUpBtn)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, SignInBtn)))
@@ -103,6 +116,12 @@ public class DoctorMainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
+        // TODO add your handling code here:
+        SignUpJPanel signup=new SignUpJPanel(history);
+        jSplitPane1.setRightComponent(signup);
+    }//GEN-LAST:event_SignUpBtnActionPerformed
 
     /**
      * @param args the command line arguments
