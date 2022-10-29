@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ui;
+package ui.user;
 
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -187,7 +187,6 @@ public class UserJFrame extends javax.swing.JFrame {
         
         UserCreate uc = new UserCreate();
         uc.setVisible(true);
-        return;
         
             
     }//GEN-LAST:event_btnRegisterActionPerformed
