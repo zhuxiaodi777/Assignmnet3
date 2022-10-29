@@ -4,6 +4,9 @@
  */
 package ui;
 
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author judy
@@ -29,16 +32,16 @@ public class UserJFrame extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         lblEmployeeId = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtUserId = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jpwpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblName.setText("Email Address:");
 
-        lblEmployeeId.setText("UserId");
+        lblEmployeeId.setText("Password");
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,20 +68,25 @@ public class UserJFrame extends javax.swing.JFrame {
         lblTitle.setText("UserLogin");
         lblTitle.setToolTipText("");
 
+        jpwpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpwpassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpwpass, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(102, 102, 102)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(281, 281, 281)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtUserId)
-                                .addComponent(txtEmail)))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblName)
@@ -88,15 +96,20 @@ public class UserJFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(102, 102, 102)))
+                            .addGap(264, 264, 264))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(281, 281, 281)
+                            .addComponent(txtEmail)
+                            .addGap(102, 102, 102)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addGap(117, 117, 117)
+                .addComponent(jpwpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(286, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(158, 158, 158)
@@ -104,10 +117,8 @@ public class UserJFrame extends javax.swing.JFrame {
                         .addComponent(lblName)
                         .addComponent(txtEmail))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblEmployeeId)
-                        .addComponent(txtUserId))
-                    .addGap(35, 35, 35)
+                    .addComponent(lblEmployeeId)
+                    .addGap(40, 40, 40)
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,18 +136,31 @@ public class UserJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //        double temperature = Double.parseDouble(txtName.getText());
 
-        if (
-            txtUserId.getText().length() == 0
-            || txtEmail.getText().length() == 0
-            //                || txtAge.getText().length() == 0
-            //            || txtAge.getText().matches("^\\d{1,}$") == false
+//        if (
+//            txtUserId.getText().length() == 0
+//            || txtEmail.getText().length() == 0
+//            //                || txtAge.getText().length() == 0
+//            //            || txtAge.getText().matches("^\\d{1,}$") == false
+//
+//        ) {
+//            JOptionPane.showMessageDialog(this, "Please enter the correct format");
+//            return;
+//        }
 
+        String useremail = txtEmail.getText();
+        String password = jpwpass.getText();
+        if (useremail.contains("1") && password.contains("1") 
         ) {
-            JOptionPane.showMessageDialog(this, "Please enter the correct format");
-            return;
+            txtEmail.setText("");
+            jpwpass.setText("");
+            UserView uv = new UserView();
+            uv.setVisible(true);  
+                  
+            }
+        else {
+            JOptionPane.showMessageDialog(null,"Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
+                    
         }
-        String name = txtEmail.getText();
-        String employeeId = txtUserId.getText();
 
         //        EmployeeProfile ep = history.addNewEmployee();
         //
@@ -155,15 +179,22 @@ public class UserJFrame extends javax.swing.JFrame {
         //        JOptionPane.showMessageDialog(this,"New Employee Profile added.");
 
         txtEmail.setText("");
-        txtUserId.setText("");
+        jpwpass.setText("");
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-
-        UserCreate usercreate = new UserCreate(history);
-        splitPane.setRightComponent(usercreate);
+        
+        UserCreate uc = new UserCreate();
+        uc.setVisible(true);
+        return;
+        
+            
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void jpwpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpwpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpwpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +227,7 @@ public class UserJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserJFrame().setVisible(true);
+                
             }
         });
     }
@@ -203,10 +235,10 @@ public class UserJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JPasswordField jpwpass;
     private javax.swing.JLabel lblEmployeeId;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtUserId;
     // End of variables declaration//GEN-END:variables
 }

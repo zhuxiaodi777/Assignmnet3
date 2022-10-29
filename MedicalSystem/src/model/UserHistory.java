@@ -28,4 +28,17 @@ public class UserHistory {
         this.history = history;
     }
     
+    
+    public UserProfile addNewUser(){
+        
+        UserProfile newEmployee = new UserProfile();
+        history.add(newEmployee);
+        return newEmployee;
+    }
+    
+//    public void deleteEmplo(UserProfile ep) {
+//        history.remove(ep);
+//         
+//    }
+    
 }
