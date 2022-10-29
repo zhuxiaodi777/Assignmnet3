@@ -24,4 +24,10 @@ public class DoctorHistory {
     public void setDoctorhistory(ArrayList<DoctorProfile> doctorhistory) {
         this.doctorhistory = doctorhistory;
     }
+    
+    public DoctorProfile addProfile(){
+        DoctorProfile doctor=new DoctorProfile();
+        doctorhistory.add(doctor);
+        return doctor;
+    }
 }

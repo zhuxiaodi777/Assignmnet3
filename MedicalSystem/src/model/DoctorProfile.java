@@ -17,6 +17,7 @@ public class DoctorProfile {
     private String hospital;
     private String email;
     private Icon photo;
+    private String specialty;
 
     public String getName() {
         return name;
@@ -72,5 +73,13 @@ public class DoctorProfile {
 
     public void setPhoto(Icon photo) {
         this.photo = photo;
+    }
+    
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 }
