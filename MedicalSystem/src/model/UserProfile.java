@@ -55,5 +55,14 @@ public class UserProfile {
     private String Age;
     private String Gender;
     private String EmailAddress;
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+    private String Password;
     
 }

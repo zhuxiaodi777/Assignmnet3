@@ -30,7 +30,7 @@
                               <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="txtAge" alignment="0" pref="227" max="32767" attributes="0"/>
-                                  <Component id="txtEmployeeId" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtUserId" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtGender" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmailAddress" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtName" alignment="0" max="32767" attributes="0"/>
@@ -39,7 +39,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblEmailAddress1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
-                              <Component id="txtEmailAddress1" max="32767" attributes="0"/>
+                              <Component id="txtPassword" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnSave" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,7 +76,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEmployeeId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtEmployeeId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUserId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -96,7 +96,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEmailAddress1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtEmailAddress1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="btnSave" min="-2" pref="46" max="-2" attributes="0"/>
@@ -116,23 +116,26 @@
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEmailAddress1">
+    <Component class="javax.swing.JTextField" name="txtPassword">
     </Component>
     <Component class="javax.swing.JLabel" name="lblGender">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gender:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEmployeeId">
+    <Component class="javax.swing.JTextField" name="txtUserId">
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmailAddress">
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmailAddress1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="password"/>
+        <Property name="text" type="java.lang.String" value="PassWord"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtName">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtGender">
     </Component>
@@ -156,7 +159,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmployeeId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UserId"/>
+        <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmailAddress">

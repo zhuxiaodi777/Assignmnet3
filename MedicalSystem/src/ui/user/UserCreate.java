@@ -4,6 +4,7 @@
  */
 package ui.user;
 
+import javax.swing.JOptionPane;
 import model.UserProfile;
 import model.UserHistory;
 
@@ -32,9 +33,9 @@ public class UserCreate extends javax.swing.JPanel {
 
         lblAge = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        txtEmailAddress1 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
-        txtEmployeeId = new javax.swing.JTextField();
+        txtUserId = new javax.swing.JTextField();
         txtEmailAddress = new javax.swing.JTextField();
         lblEmailAddress1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -51,7 +52,13 @@ public class UserCreate extends javax.swing.JPanel {
 
         lblGender.setText("Gender:");
 
-        lblEmailAddress1.setText("password");
+        lblEmailAddress1.setText("PassWord");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Register");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +72,7 @@ public class UserCreate extends javax.swing.JPanel {
         lblTitle.setText("UserRegister");
         lblTitle.setToolTipText("");
 
-        lblEmployeeId.setText("UserId");
+        lblEmployeeId.setText("ID");
 
         lblEmailAddress.setText("Email Address:");
 
@@ -86,14 +93,14 @@ public class UserCreate extends javax.swing.JPanel {
                                 .addGap(281, 281, 281)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                                    .addComponent(txtEmployeeId, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtUserId, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblEmailAddress1)
                                 .addGap(221, 221, 221)
-                                .addComponent(txtEmailAddress1)))
+                                .addComponent(txtPassword)))
                         .addGap(101, 101, 101))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +113,7 @@ public class UserCreate extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
+                .addGap(300, 300, 300))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +127,7 @@ public class UserCreate extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeId)
-                    .addComponent(txtEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAge)
@@ -136,7 +143,7 @@ public class UserCreate extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmailAddress1)
-                    .addComponent(txtEmailAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(136, Short.MAX_VALUE))
@@ -149,47 +156,46 @@ public class UserCreate extends javax.swing.JPanel {
 
         if (
             txtName.getText().length() == 0
-            //                || txtAge.getText().length() == 0
-            //            || txtAge.getText().matches("^\\d{1,}$") == false
-            //            || txtGender.getText().length() == 0
-            //            || txtStartDate.getText().length() == 0
-            //            || txtLevel.getText().length() == 0
-            //            || txtTeamInfo.getText().length() == 0
-            //            || txtPositionTitle.getText().length() == 0
-            //            || txtCellPhoneNumber.getText().matches("^\\d{2,}$") == false
-            //            || txtEmailAddress.getText().length() == 0
-            //            || txtPhoto.getText().length() == 0
+                        || txtUserId.getText().length() == 0
+                        || txtAge.getText().matches("^\\d{1,}$") == false
+                        || txtGender.getText().length() == 0
+//                        || txtCellPhoneNumber.getText().matches("^\\d{2,}$") == false
+                        || txtEmailAddress.getText().length() == 0
+                        || txtPassword.getText().length() == 0         
         ) {
-            //            JOptionPane.showMessageDialog(this, "Please enter the correct format");
+            JOptionPane.showMessageDialog(this, "Please enter the correct format");
             return;
         }
         String name = txtName.getText();
-        String employeeId = txtEmployeeId.getText();
+        String userid = txtUserId.getText();
         String age = txtAge.getText();
         String gender = txtGender.getText();
-        //        String startDate = txtStartDate.getText();
-        //        String level = txtLevel.getText();
-        //        String teamInfo = txtTeamInfo.getText();
-        //        String positionTitle = txtPositionTitle.getText();
-        //        String cellPhoneNumber = txtCellPhoneNumber.getText();
-        //        String emailAddress = txtEmailAddress.getText();
-        //        String photo = txtPhoto.getText();
+        String emailAddress = txtEmailAddress.getText();
+        String password = txtPassword.getText();
+
 
         UserProfile up = userHistory.addNewUser();
 
         up.setName(name);
-        up.setUserId(employeeId);
+        up.setUserId(userid);
         up.setAge(age);
         up.setGender(gender);
+        up.setEmailAddress(emailAddress);
+        up.setPassword(password);
 
-        //        JOptionPane.showMessageDialog(this,"New Employee Profile added.");
+        JOptionPane.showMessageDialog(this,"Registered Successful");
 
         txtName.setText("");
-        txtEmployeeId.setText("");
+        txtUserId.setText("");
         txtAge.setText("");
         txtGender.setText("");
         txtEmailAddress.setText("");
+        txtPassword.setText("");
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,9 +209,9 @@ public class UserCreate extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmailAddress;
-    private javax.swing.JTextField txtEmailAddress1;
-    private javax.swing.JTextField txtEmployeeId;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUserId;
     // End of variables declaration//GEN-END:variables
 }
