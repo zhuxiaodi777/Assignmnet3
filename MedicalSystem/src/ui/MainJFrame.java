@@ -42,24 +42,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         controlPanel = new javax.swing.JPanel();
-        btnAdmin = new javax.swing.JButton();
+        btnCommAdmin = new javax.swing.JButton();
         btnDoctor = new javax.swing.JButton();
         btnUser = new javax.swing.JButton();
+        btnAdmin1 = new javax.swing.JButton();
         userProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lab 5 Skeleton");
-        setBackground(new java.awt.Color(240, 240, 240));
 
         splitPane.setDividerLocation(150);
         splitPane.setOpaque(false);
 
-        controlPanel.setBackground(new java.awt.Color(240, 240, 240));
-
-        btnAdmin.setText("Administrator");
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+        btnCommAdmin.setText("CommAdmin");
+        btnCommAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminActionPerformed(evt);
+                btnCommAdminActionPerformed(evt);
             }
         });
 
@@ -77,6 +75,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnAdmin1.setText("Administrator");
+        btnAdmin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdmin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -84,32 +89,43 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDoctor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCommAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdmin, btnDoctor});
+        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCommAdmin, btnDoctor});
 
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(btnAdmin)
-                .addGap(18, 18, 18)
+                .addGap(155, 155, 155)
                 .addComponent(btnDoctor)
                 .addGap(18, 18, 18)
                 .addComponent(btnUser)
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCommAdmin)
+                .addContainerGap(333, Short.MAX_VALUE))
+            .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(controlPanelLayout.createSequentialGroup()
+                    .addGap(124, 124, 124)
+                    .addComponent(btnAdmin1)
+                    .addContainerGap(446, Short.MAX_VALUE)))
         );
 
         splitPane.setLeftComponent(controlPanel);
 
-        userProcessContainer.setBackground(new java.awt.Color(240, 240, 240));
         userProcessContainer.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(userProcessContainer);
 
@@ -127,14 +143,19 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+    private void btnCommAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommAdminActionPerformed
+  ComJPanel comJPanel  = new  ComJPanel();
+ //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
+      
+splitPane.setRightComponent(comJPanel);
+
 
 //        AdminWorkAreaJPanel awajp = new AdminWorkAreaJPanel(userProcessContainer, supplierDirectory);
 //        userProcessContainer.add("AdminWorkAreaJPanel",awajp);
 //        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
 //        layout.next(userProcessContainer);
 
-    }//GEN-LAST:event_btnAdminActionPerformed
+    }//GEN-LAST:event_btnCommAdminActionPerformed
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
 
@@ -151,6 +172,10 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserActionPerformed
+
+    private void btnAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdmin1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +213,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnAdmin1;
+    private javax.swing.JButton btnCommAdmin;
     private javax.swing.JButton btnDoctor;
     private javax.swing.JButton btnUser;
     private javax.swing.JPanel controlPanel;
