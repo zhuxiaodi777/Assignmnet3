@@ -168,7 +168,7 @@ splitPane.setRightComponent(comJPanel);
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
         UserLogin userlogin = new UserLogin(userProcessContainer, userHistory);
-        userProcessContainer.add("LoginSupplierJPanel", userlogin);
+        userProcessContainer.add("UserLogin", userlogin);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserActionPerformed

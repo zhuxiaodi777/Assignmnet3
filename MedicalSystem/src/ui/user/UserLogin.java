@@ -8,6 +8,8 @@ package ui.user;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.DoctorHistory;
+import model.DoctorProfile;
 import model.UserHistory;
 
 /**
@@ -17,11 +19,14 @@ import model.UserHistory;
 public class UserLogin extends javax.swing.JPanel {
 
     /** Creates new form UserLogin */
-    private JPanel userProcessContainer;
-    private UserHistory userHistory;
+    JPanel userProcessContainer;
+    UserHistory userHistory;
+    DoctorProfile doctorProfile;
+//    DoctorHistory doctorHistory;
     public UserLogin(JPanel userProcessContainer,UserHistory userHistory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.userHistory = userHistory;
     }
 
     /** This method is called from within the constructor to
@@ -150,7 +155,7 @@ public class UserLogin extends javax.swing.JPanel {
         if (useremail.contains("1") && password.contains("1")
         ) {
             
-            UserView uv = new UserView(userProcessContainer, userHistory);
+            UserView uv = new UserView(userProcessContainer, doctorProfile);
             userProcessContainer.add("ManageSupplierAdministrative", uv);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);

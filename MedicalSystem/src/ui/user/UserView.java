@@ -23,16 +23,16 @@ public class UserView extends javax.swing.JPanel {
     /**
      * Creates new form UserView
      */
-    private JPanel userProcessContainer;
-    private UserHistory userHistory;
-    DoctorHistory doctorHistory;
-    private DefaultTableModel model;
+    JPanel userProcessContainer;
+//    UserHistory userHistory;
+    DoctorProfile doctorProfile;
+    DefaultTableModel model;
     
-    public UserView(JPanel upc, UserHistory uh) {
+    public UserView(JPanel userProcessContainer,DoctorProfile doctorProfile) {
         initComponents();
-        userProcessContainer = upc;
-        userHistory = uh;
-        this.doctorHistory=doctorHistory;
+        this.userProcessContainer = userProcessContainer;
+//        this.userHistory = userHistory;
+        this.doctorProfile=doctorProfile;
         refreshTable();
         populateTable();
     }
