@@ -5,9 +5,14 @@
 package ui.user;
 
 import java.awt.CardLayout;
+import javax.swing.Icon;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.UserHistory;
+import model.DoctorHistory;
+import model.DoctorProfile;
 
 /**
  *
@@ -20,11 +25,16 @@ public class UserView extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private UserHistory userHistory;
+    DoctorHistory doctorHistory;
+    private DefaultTableModel model;
+    
     public UserView(JPanel upc, UserHistory uh) {
         initComponents();
         userProcessContainer = upc;
         userHistory = uh;
+        this.doctorHistory=doctorHistory;
         refreshTable();
+        populateTable();
     }
     
     public void refreshTable(){
@@ -50,6 +60,11 @@ public class UserView extends javax.swing.JPanel {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDoctor = new javax.swing.JTable();
+        cmbsearch = new javax.swing.JComboBox<>();
+        txtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -58,19 +73,84 @@ public class UserView extends javax.swing.JPanel {
             }
         });
 
+        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Doctor_Name", "community", "city", "hospital", "email", "photo", "specialty"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoctorMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDoctor);
+        if (tblDoctor.getColumnModel().getColumnCount() > 0) {
+            tblDoctor.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        cmbsearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor_Name", "community", "city", "hospital", "email", "photo", "specialty" }));
+        cmbsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbsearchActionPerformed(evt);
+            }
+        });
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel2.setText("search");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(538, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(0, 343, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(423, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(27, 27, 27))
         );
@@ -84,8 +164,86 @@ public class UserView extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void tblDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctorMouseClicked
+        // TODO add your handling code here:
+        //鼠标点击选中表格中一行信息可像是在文本字段中。
+        DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
+        //定义变量row为鼠标点击的行数。
+        int row=tblDoctor.getSelectedRow();
+        //函数getValueAt返回要查询的行和列处单元格的属性值
+
+        
+//        txtName.setText(model.getValueAt(row, 0).toString());
+//        txtEmployeeId.setText(model.getValueAt(row, 1).toString());
+//        txtAge.setText(model.getValueAt(row, 2).toString());
+//        txtGender.setText(model.getValueAt(row, 3).toString());
+//        txtStartDate.setText(model.getValueAt(row, 4).toString());
+//        txtLevel.setText(model.getValueAt(row, 5).toString());
+//        txtTeamInfo.setText(model.getValueAt(row, 6).toString());
+//        txtPositionTitle.setText(model.getValueAt(row, 7).toString());
+//        txtCellPhoneNumber.setText(model.getValueAt(row, 8).toString());
+//        txtEmailAddress.setText(model.getValueAt(row, 9).toString());
+//        txtPhoto.setText(model.getValueAt(row, 10).toString());
+
+//        ImageIcon icon = new ImageIcon(txtPhoto.getText());
+//        Image image = icon.getImage();
+//        lblPhoto.setIcon(icon);
+
+    }//GEN-LAST:event_tblDoctorMouseClicked
+
+    private void cmbsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbsearchActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmbsearchActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String ss = txtSearch.getText();
+        search(ss);
+    }//GEN-LAST:event_txtSearchKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JComboBox<String> cmbsearch;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblDoctor;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    
+    private void populateTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
+         model.setRowCount(0);
+        
+//        for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
+//            Object[] row = new Object[9];
+//            //        private String name;
+//            row[0] = ep;
+//            row[1] = ep.getName();
+//            row[2] = ep.getCommunity();
+//            row[3] = ep.getCity();
+//            row[4] = ep.getHospital();
+//            row[5] = ep.getEmail();
+//            row[6] = ep.getPhoto();
+//            row[7] = ep.getSpecialty();
+//            
+//            model.addRow(row);
+//            
+//        }
+    }
+    
+    public void search (String str){
+        
+        model = (DefaultTableModel) tblDoctor.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tblDoctor.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str,cmbsearch.getSelectedIndex()));
+    }
 }
