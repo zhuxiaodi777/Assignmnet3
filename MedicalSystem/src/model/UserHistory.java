@@ -36,9 +36,9 @@ public class UserHistory {
         return newEmployee;
     }
     
-//    public void deleteEmplo(UserProfile ep) {
-//        history.remove(ep);
-//         
-//    }
+    public void deleteUser(UserProfile up) {
+        history.remove(up);
+         
+    }
     
 }

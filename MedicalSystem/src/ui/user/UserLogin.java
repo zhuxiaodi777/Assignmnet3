@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import model.DoctorHistory;
 import model.DoctorProfile;
 import model.UserHistory;
+import model.UserProfile;
 
 /**
  *
@@ -21,14 +22,15 @@ public class UserLogin extends javax.swing.JPanel {
     /** Creates new form UserLogin */
     JPanel userProcessContainer;
     UserHistory userHistory;
-    DoctorProfile doctorProfile;
-//    DoctorHistory doctorHistory;
+    UserProfile userprofile;
+//    DoctorProfile doctorProfile;
+    DoctorHistory doctorHistory;
     public UserLogin(JPanel userProcessContainer,UserHistory userHistory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.userHistory = userHistory;
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -119,9 +121,9 @@ public class UserLogin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jpwpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmployeeId))
-                .addGap(55, 55, 55)
+                .addGap(63, 63, 63)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -155,7 +157,7 @@ public class UserLogin extends javax.swing.JPanel {
         if (useremail.contains("1") && password.contains("1")
         ) {
             
-            UserView uv = new UserView(userProcessContainer, doctorProfile);
+            UserView uv = new UserView(userProcessContainer, doctorHistory);
             userProcessContainer.add("ManageSupplierAdministrative", uv);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
