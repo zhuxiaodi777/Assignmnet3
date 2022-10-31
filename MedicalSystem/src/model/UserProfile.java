@@ -9,6 +9,13 @@ package model;
  * @author judy
  */
 public class UserProfile {
+    private static int count=0;
+    
+    public UserProfile(){
+        count++;
+            }
+    
+    
 
     public String getName() {
         return Name;

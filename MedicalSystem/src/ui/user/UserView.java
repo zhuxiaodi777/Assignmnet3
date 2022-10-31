@@ -33,13 +33,13 @@ public class UserView extends javax.swing.JPanel {
     private DefaultTableModel model;
     Order currentOrder;
     
-    public UserView(JPanel userProcessContainer,DoctorHistory doctorHistory) {
+    public UserView(JPanel upc,DoctorHistory ds) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
-        this.userHistory = userHistory;
-        this.doctorHistory= doctorHistory;
+        userProcessContainer = upc;
+        //doctorHistory= doctorHistory;
+        doctorHistory= ds;
 //        this.doctorProfile= doctorProfile;
-        this.currentOrder= new Order();
+        currentOrder= new Order();
         
         populateTable();
         populateCartTable();
@@ -363,7 +363,7 @@ public class UserView extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
-            Object[] row = new Object[7];
+            Object[] row = new Object[7]; 
             //        private String name;
             row[0] = ep;
             row[1] = ep.getName();

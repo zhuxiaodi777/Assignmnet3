@@ -35,6 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         doctor = new DoctorProfile();
         doctorDirectory= new DoctorHistory();
+        userHistory=new UserHistory();
 
 //        setSize(830,600);
     }
@@ -170,7 +171,7 @@ splitPane.setRightComponent(commJPanel);
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
-        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory);
+        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory, doctorDirectory);
         userProcessContainer.add("UserLogin", userlogin);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

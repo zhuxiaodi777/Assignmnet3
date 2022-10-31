@@ -4,6 +4,7 @@
  */
 package ui.user;
 
+import java.awt.Panel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.UserProfile;
@@ -18,16 +19,16 @@ public class UserCreate extends javax.swing.JPanel {
     /**
      * Creates new form UserCreate1
      */
-    UserHistory userHistory ;
+
+    JPanel userProcessContainer;
+    UserHistory userHistory;
     UserProfile userprofile;
-    private JPanel userProcessContainer;
-    public UserCreate(JPanel userProcessContainer,UserHistory userHistory) {
-       
+    //UserHistory userHistory = new UserHistory();
+    public UserCreate(JPanel upc,UserHistory uh) {
         initComponents();
-        
-        this.userHistory= userHistory;
-        this.userProcessContainer =userProcessContainer;
-        
+        userProcessContainer=upc;
+        userHistory=uh;
+
     }
 
     /**
@@ -161,7 +162,7 @@ public class UserCreate extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         //        double temperature = Double.parseDouble(txtName.getText());
-
+        
         if (
             txtName.getText().length() == 0
                         || txtUserId.getText().length() == 0
@@ -174,15 +175,25 @@ public class UserCreate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter the correct format");
             return;
         }
-        
+
+        String name = txtName.getText();
+        String userid = txtUserId.getText();
+        String age = txtAge.getText();
+        String gender = txtGender.getText();
+        String emailAddress = txtEmailAddress.getText();
+        String password = txtPassword.getText();
+
+
         userprofile = userHistory.addNewUser();
-        
-        userprofile.setName(txtName.getText());
-        userprofile.setUserId(txtUserId.getText());
-        userprofile.setAge(txtAge.getText());
-        userprofile.setGender(txtGender.getText());
-        userprofile.setEmailAddress(txtEmailAddress.getText());
-        userprofile.setPassword(txtPassword.getText());
+        //userprofile=userHistory.addNewUser();
+
+        userprofile.setName(name);
+        userprofile.setUserId(userid);
+        userprofile.setAge(age);
+        userprofile.setGender(gender);
+        userprofile.setEmailAddress(emailAddress);
+        userprofile.setPassword(password);
+
 
         JOptionPane.showMessageDialog(this,"Registered Successful");
 

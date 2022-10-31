@@ -19,10 +19,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     DoctorProfile doctor;
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, DoctorProfile doctor) {
+    public DoctorWorkAreaJPanel(JPanel upc, DoctorProfile d) {
         initComponents();
-        this.doctor=doctor;
-        this.userProcessContainer=userProcessContainer;
+        doctor=d;
+        userProcessContainer=upc;
     }
 
     /**

@@ -5,6 +5,7 @@
 package ui.user;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.DoctorProfile;
 
 
@@ -14,18 +15,18 @@ import model.DoctorProfile;
  */
 public class Order {
     
-    ArrayList<OrderItem> orderItemlist;
+    List<OrderItem> orderItemlist;
     
     public Order() {
         this.orderItemlist = new ArrayList<OrderItem>();
         
     }
 
-    public ArrayList<OrderItem> getOrderItemlist() {
+    public List<OrderItem> getOrderItemlist() {
         return orderItemlist;
     }
 
-    public void setOrderItemlist(ArrayList<OrderItem> orderItemlist) {
+    public void setOrderItemlist(List<OrderItem> orderItemlist) {
         this.orderItemlist = orderItemlist;
     }
     

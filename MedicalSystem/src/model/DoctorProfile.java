@@ -21,6 +21,19 @@ public class DoctorProfile {
     private String password;
     
     private EncounterHistory encounterHistory;
+
+    public DoctorProfile(String name, String ID, String community, String city, String hospital, String email, Icon photo, String specialty, String password) {
+        this.name = name;
+        this.ID = ID;
+        this.community = community;
+        this.city = city;
+        this.hospital = hospital;
+        this.email = email;
+        this.photo = photo;
+        this.specialty = specialty;
+        this.password = password;
+    }
+    
     
     public DoctorProfile(){
         encounterHistory=new EncounterHistory();

@@ -23,12 +23,15 @@ public class UserLogin extends javax.swing.JPanel {
     JPanel userProcessContainer;
     UserHistory userHistory;
     UserProfile userprofile;
-    DoctorProfile doctorProfile;
+    DoctorHistory doctorhistory;
+//    DoctorProfile doctorProfile;
+
     DoctorHistory doctorHistory;
-    public UserLogin(JPanel userProcessContainer,UserHistory userHistory) {
+    public UserLogin(JPanel upc,UserHistory uh, DoctorHistory ds) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.userHistory = userHistory;
+        userProcessContainer=upc;
+        userHistory = uh;
+        doctorhistory=ds;
     }
     
     /** This method is called from within the constructor to
@@ -175,10 +178,9 @@ public class UserLogin extends javax.swing.JPanel {
 
         String useremail = txtEmail.getText();
         String password = jpwpass.getText();
-        if (useremail.contains("1") && password.contains("1")
-        ) {
+        if ((useremail.contains("1")) && (password.contains("1"))) {
             
-            UserView uv = new UserView(userProcessContainer, doctorHistory);
+            UserView uv = new UserView(userProcessContainer, doctorhistory);
             userProcessContainer.add("ManageSupplierAdministrative", uv);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -214,7 +216,8 @@ public class UserLogin extends javax.swing.JPanel {
     private void btntestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestActionPerformed
         // TODO add your handling code here:
 
-        UserView1 uc = new UserView1(userProcessContainer, doctorHistory);
+
+        UserCreate uc = new UserCreate(userProcessContainer, userHistory);
         userProcessContainer.add("ManageSupplierAdministrative", uc);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,11 @@ import java.util.ArrayList;
  */
 public class UserHistory {
     
+
     private ArrayList<UserProfile> userHistory;
+
+    private List<UserProfile> history;
+
     
     public UserHistory(){
         
@@ -20,12 +25,15 @@ public class UserHistory {
         
     }
 
-    public ArrayList<UserProfile> getHistory() {
-        return userHistory;
+
+
+    public List<UserProfile> getHistory() {
+        return history;
     }
 
-    public void setHistory(ArrayList<UserProfile> history) {
-        this.userHistory = history;
+    public void setHistory(List<UserProfile> history) {
+        this.history = history;
+
     }
     
     
