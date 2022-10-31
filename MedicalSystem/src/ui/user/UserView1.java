@@ -22,7 +22,7 @@ import model.UserProfile;
  *
  * @author judy
  */
-public class UserView extends javax.swing.JPanel {
+public class UserView1 extends javax.swing.JPanel {
 
     /**
      * Creates new form UserView
@@ -32,8 +32,8 @@ public class UserView extends javax.swing.JPanel {
     DoctorHistory doctorHistory;
     private DefaultTableModel model;
     Order currentOrder;
-    
-    public UserView(JPanel userProcessContainer,DoctorHistory doctorHistory) {
+    RecordHistory history;
+    public UserView1(JPanel userProcessContainer,DoctorHistory doctorHistory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userHistory = userHistory;
@@ -42,7 +42,7 @@ public class UserView extends javax.swing.JPanel {
         this.currentOrder= new Order();
         
         populateTable();
-        populateCartTable();
+//        populateCartTable();
     }
     
 
@@ -68,6 +68,12 @@ public class UserView extends javax.swing.JPanel {
         jbtDelete = new javax.swing.JButton();
         txtUpdateDate = new javax.swing.JTextField();
         jbtUpdateDate = new javax.swing.JButton();
+        txtname = new javax.swing.JTextField();
+        txtcommunity = new javax.swing.JTextField();
+        txtcity = new javax.swing.JTextField();
+        txthospital = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        txtspecialty = new javax.swing.JTextField();
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +175,42 @@ public class UserView extends javax.swing.JPanel {
             }
         });
 
+        txtname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnameActionPerformed(evt);
+            }
+        });
+
+        txtcommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcommunityActionPerformed(evt);
+            }
+        });
+
+        txtcity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcityActionPerformed(evt);
+            }
+        });
+
+        txthospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthospitalActionPerformed(evt);
+            }
+        });
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+
+        txtspecialty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtspecialtyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,10 +239,23 @@ public class UserView extends javax.swing.JPanel {
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtcity, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txthospital, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtspecialty, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtRecordDate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtRecordDate)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +270,15 @@ public class UserView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtRecordDate)
-                    .addComponent(txtRecordDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRecordDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txthospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtspecialty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,24 +302,21 @@ public class UserView extends javax.swing.JPanel {
 
     private void tblDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctorMouseClicked
         // TODO add your handling code here:
-        //鼠标点击选中表格中一行信息可像是在文本字段中。
-//        DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
-//        //定义变量row为鼠标点击的行数。
-//        int row=tblDoctor.getSelectedRow();
-        //函数getValueAt返回要查询的行和列处单元格的属性值
+//        鼠标点击选中表格中一行信息可像是在文本字段中。
+        DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
+        //定义变量row为鼠标点击的行数。
+        int row=tblDoctor.getSelectedRow();
+//        函数getValueAt返回要查询的行和列处单元格的属性值
 
         
-//        txtName.setText(model.getValueAt(row, 0).toString());
-//        txtEmployeeId.setText(model.getValueAt(row, 1).toString());
-//        txtAge.setText(model.getValueAt(row, 2).toString());
-//        txtGender.setText(model.getValueAt(row, 3).toString());
-//        txtStartDate.setText(model.getValueAt(row, 4).toString());
-//        txtLevel.setText(model.getValueAt(row, 5).toString());
-//        txtTeamInfo.setText(model.getValueAt(row, 6).toString());
-//        txtPositionTitle.setText(model.getValueAt(row, 7).toString());
-//        txtCellPhoneNumber.setText(model.getValueAt(row, 8).toString());
-//        txtEmailAddress.setText(model.getValueAt(row, 9).toString());
-//        txtPhoto.setText(model.getValueAt(row, 10).toString());
+        txtname.setText(model.getValueAt(row, 0).toString());
+        txtcommunity.setText(model.getValueAt(row, 1).toString());
+        txtcity.setText(model.getValueAt(row, 2).toString());
+        txthospital.setText(model.getValueAt(row, 3).toString());
+        txtemail.setText(model.getValueAt(row, 4).toString());
+        txtspecialty.setText(model.getValueAt(row, 5).toString());
+//        txtRecordDate.getText();
+        
 
 //        ImageIcon icon = new ImageIcon(txtPhoto.getText());
 //        Image image = icon.getImage();
@@ -291,44 +351,70 @@ public class UserView extends javax.swing.JPanel {
     private void jbtRecordDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRecordDateActionPerformed
         // TODO add your handling code here:
         
-        int selectedRowIndex = tblDoctor.getSelectedRow();
-        if (selectedRowIndex < 0) {
+        
+        
+
+//        txtname.setText(model.getValueAt(row, 0).toString());
+//        txtcommunity.setText(model.getValueAt(row, 1).toString());
+//        txtcity.setText(model.getValueAt(row, 2).toString());
+//        txthospital.setText(model.getValueAt(row, 3).toString());
+//        txtemail.setText(model.getValueAt(row, 4).toString());
+//        txtspecialty.setText(model.getValueAt(row, 5).toString());
+//        txtRecordDate.getText();
+        
+        Record ep = history.addrecord();
+        
+        ep.setName(txtname.getText());
+        ep.setCommunity(txtcommunity.getText());
+        ep.setCity(txtcity.getText());
+        ep.setHospital(txthospital.getText());
+        ep.setEmail(txtemail.getText());
+        ep.setSpecialty(txtspecialty.getText());
+        ep.setRecordDate(txtRecordDate.getText());
+        ;
+        
+        
+
+        JOptionPane.showMessageDialog(this,"New Record added.");
+
+//        int selectedRowIndex = tblDoctor.getSelectedRow();
+//        if (selectedRowIndex < 0) {
+////            JOptionPane.showMessageDialog(this,"");
+//            return;
+//        }
+//        DoctorProfile doctorProfile = (DoctorProfile) tblDoctor.getValueAt(selectedRowIndex, 0);
+//        String RecordDate;
+//        
+//        try {
+//            
+//            RecordDate = txtRecordDate.getText();
+//            
+//            
+//        } catch (Exception e) {
+//            
 //            JOptionPane.showMessageDialog(this,"");
-            return;
-        }
-        DoctorProfile doctorProfile = (DoctorProfile) tblDoctor.getValueAt(selectedRowIndex, 0);
-        String RecordDate;
-        
-        try {
-            
-            RecordDate = txtRecordDate.getText();
-            
-            
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(this,"");
-            return;
-            
-        }
-        
-        
-        OrderItem item = currentOrder.findDoctor(doctorProfile);
-        
-        if (item == null ){
-            currentOrder.addNewOrderItem(doctorProfile,RecordDate);
-        }
-        else {
-                if(item.getDoctorProfile().getName() == null){
-                    JOptionPane.showMessageDialog(this,"");
-                    return;
-                }
-                
-                item.getDoctorProfile().setName(item.getDoctorProfile().getName());
-                item.setRecordDate(RecordDate);
-            
-                }
+//            return;
+//            
+//        }
+//        
+//        
+//        OrderItem item = currentOrder.findDoctor(doctorProfile);
+//        
+//        if (item == null ){
+//            currentOrder.addNewOrderItem(doctorProfile,RecordDate);
+//        }
+//        else {
+//                if(item.getDoctorProfile().getName() == null){
+//                    JOptionPane.showMessageDialog(this,"");
+//                    return;
+//                }
+//                
+//                item.getDoctorProfile().setName(item.getDoctorProfile().getName());
+//                item.setRecordDate(RecordDate);
+//            
+//                }
         populateTable();
-        populateCartTable();
+//        populateCartTable();
     }//GEN-LAST:event_jbtRecordDateActionPerformed
 
     private void jbtUpdateDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateDateActionPerformed
@@ -338,6 +424,30 @@ public class UserView extends javax.swing.JPanel {
     private void jbtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtDeleteActionPerformed
+
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameActionPerformed
+
+    private void txtcommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcommunityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcommunityActionPerformed
+
+    private void txtcityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcityActionPerformed
+
+    private void txthospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthospitalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthospitalActionPerformed
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txtspecialtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspecialtyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtspecialtyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -354,6 +464,12 @@ public class UserView extends javax.swing.JPanel {
     private javax.swing.JTextField txtRecordDate;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtUpdateDate;
+    private javax.swing.JTextField txtcity;
+    private javax.swing.JTextField txtcommunity;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txthospital;
+    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtspecialty;
     // End of variables declaration//GEN-END:variables
 
     
@@ -385,20 +501,20 @@ public class UserView extends javax.swing.JPanel {
        DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
         model.setRowCount(0);
 //        cmb  
-        for (OrderItem ep :currentOrder.getOrderItemlist()) {
+        for (Record ep :history.getRecordhistory()) {
             Object[] row = new Object[8];
             
             row[0] = ep;
-            row[1] = ep.getDoctorProfile().getName();
-            row[2] = ep.getDoctorProfile().getCommunity();
-            row[3] = ep.getDoctorProfile().getCity();
-            row[4] = ep.getDoctorProfile().getHospital();
-            row[5] = ep.getDoctorProfile().getEmail();
-            row[6] = ep.getDoctorProfile().getSpecialty();
+            row[1] = ep.getName();
+            row[2] = ep.getCommunity();
+            row[3] = ep.getCity();
+            row[4] = ep.getHospital();
+            row[5] = ep.getEmail();
+            row[6] = ep.getSpecialty();
             row[7] = ep.getRecordDate();
             model.addRow(row);
         }
-        
+//        
         
      }   
     

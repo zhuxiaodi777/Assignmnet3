@@ -12,32 +12,32 @@ import java.util.ArrayList;
  */
 public class UserHistory {
     
-    private ArrayList<UserProfile> history;
+    private ArrayList<UserProfile> userHistory;
     
     public UserHistory(){
         
-        this.history= new ArrayList<UserProfile>();
+        this.userHistory= new ArrayList<UserProfile>();
         
     }
 
     public ArrayList<UserProfile> getHistory() {
-        return history;
+        return userHistory;
     }
 
     public void setHistory(ArrayList<UserProfile> history) {
-        this.history = history;
+        this.userHistory = history;
     }
     
     
     public UserProfile addNewUser(){
         
-        UserProfile newEmployee = new UserProfile();
-        history.add(newEmployee);
-        return newEmployee;
+        UserProfile userprofile = new UserProfile();
+        userHistory.add(userprofile);
+        return userprofile;
     }
     
-    public void deleteUser(UserProfile up) {
-        history.remove(up);
+    public void deleteUser(UserProfile userProfile) {
+        userHistory.remove(userProfile);
          
     }
     

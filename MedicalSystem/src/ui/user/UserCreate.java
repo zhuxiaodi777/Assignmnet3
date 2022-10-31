@@ -5,6 +5,7 @@
 package ui.user;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.UserProfile;
 import model.UserHistory;
 
@@ -17,9 +18,16 @@ public class UserCreate extends javax.swing.JPanel {
     /**
      * Creates new form UserCreate1
      */
-    UserHistory userHistory = new UserHistory();
-    public UserCreate() {
+    UserHistory userHistory ;
+    UserProfile userprofile;
+    private JPanel userProcessContainer;
+    public UserCreate(JPanel userProcessContainer,UserHistory userHistory) {
+       
         initComponents();
+        
+        this.userHistory= userHistory;
+        this.userProcessContainer =userProcessContainer;
+        
     }
 
     /**
@@ -166,22 +174,15 @@ public class UserCreate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter the correct format");
             return;
         }
-        String name = txtName.getText();
-        String userid = txtUserId.getText();
-        String age = txtAge.getText();
-        String gender = txtGender.getText();
-        String emailAddress = txtEmailAddress.getText();
-        String password = txtPassword.getText();
-
-
-        UserProfile up = userHistory.addNewUser();
-
-        up.setName(name);
-        up.setUserId(userid);
-        up.setAge(age);
-        up.setGender(gender);
-        up.setEmailAddress(emailAddress);
-        up.setPassword(password);
+        
+        userprofile = userHistory.addNewUser();
+        
+        userprofile.setName(txtName.getText());
+        userprofile.setUserId(txtUserId.getText());
+        userprofile.setAge(txtAge.getText());
+        userprofile.setGender(txtGender.getText());
+        userprofile.setEmailAddress(txtEmailAddress.getText());
+        userprofile.setPassword(txtPassword.getText());
 
         JOptionPane.showMessageDialog(this,"Registered Successful");
 
