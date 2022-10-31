@@ -12,7 +12,7 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
  *
  * @author Clark
  */
-public class ComJPanel extends javax.swing.JPanel {
+public class CommJPanel extends javax.swing.JPanel {
 
 //import java.awt.Toolkit;
 //import java.awt.event.WindowEvent;
@@ -22,7 +22,7 @@ public class ComJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ComJPanel
      */
-    public ComJPanel() {
+    public CommJPanel() {
         initComponents();
     }
 
@@ -59,7 +59,7 @@ public class ComJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Login  Here !!");
+        jLabel1.setText("Comm Login  Here !!");
 
         jBTcancel.setText("Cancel");
         jBTcancel.addActionListener(new java.awt.event.ActionListener() {
@@ -135,12 +135,12 @@ public class ComJPanel extends javax.swing.JPanel {
 String password = jPasswordField.getText();
 String username = jUsernameField.getText();
 //
-if(password.contains("admin123") && username.contains("admin123"))
+if(password.contains("comm123") && username.contains("comm123"))
 
 {
 jPasswordField.setText("");
 jUsernameField.setText("");
-JOptionPane.showMessageDialog(this,"Login successfully!! Welcome back!!");
+JOptionPane.showMessageDialog(this,"Comm Login successfully!! Welcome back!!");
 //close();
 //welcome w =new welcome();
 //w.setVisible(true);

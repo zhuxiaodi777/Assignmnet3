@@ -2,19 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui;
+package ui.admin;
 
+import java.awt.CardLayout;
 import ui.comm.*;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 /**
  *
  * @author Clark
  */
-public class ComJPanel extends javax.swing.JPanel {
+public class AdminJPanel extends javax.swing.JPanel {
 
+JPanel userProcessContainer;
 //import java.awt.Toolkit;
 //import java.awt.event.WindowEvent;
 //import javax.swing.JOptionPane;
@@ -23,7 +26,7 @@ public class ComJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ComJPanel
      */
-    public ComJPanel() {
+    public AdminJPanel() {
         initComponents();
     }
 
@@ -60,7 +63,7 @@ public class ComJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Login  Here !!");
+        jLabel1.setText("Admin Login  Here !!");
 
         jBTcancel.setText("Cancel");
         jBTcancel.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +128,9 @@ public class ComJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jUsernameFieldActionPerformed
 
     private void jBTcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTcancelActionPerformed
-        // TODO add your handling code here:
+  userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);        // TODO add your handling code here:
 
 
     }//GEN-LAST:event_jBTcancelActionPerformed
@@ -141,7 +146,7 @@ if(password.contains("admin123") && username.contains("admin123"))
 {
 jPasswordField.setText("");
 jUsernameField.setText("");
-JOptionPane.showMessageDialog(this,"Login successfully!! Welcome back!!");
+JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
 //close();
 //welcome w =new welcome();
 //w.setVisible(true);
