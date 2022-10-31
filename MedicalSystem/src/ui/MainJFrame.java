@@ -9,9 +9,11 @@ import doctor.UI.DoctorLoginJPanel;
 import java.awt.CardLayout;
 import model.DoctorHistory;
 import model.DoctorProfile;
+import model.CommHistory;
+import model.CommProfile;
 import model.UserHistory;
-import ui.comm.CommJPanel;
 import ui.admin.AdminJPanel;
+import ui.comm.CommLoginJPanel;
 //import model.SupplierDirectory;
 //import ui.AdminRole.AdminWorkAreaJPanel;
 import ui.user.UserLogin;
@@ -29,13 +31,15 @@ public class MainJFrame extends javax.swing.JFrame {
     UserHistory userHistory;
     DoctorHistory doctorDirectory;
     DoctorProfile doctor;
-    
+        CommHistory commHistory ;
+        CommProfile comm;
     
     public MainJFrame() {
         initComponents();
         doctor = new DoctorProfile();
         doctorDirectory= new DoctorHistory();
         userHistory=new UserHistory();
+    
 
 //        setSize(830,600);
     }
@@ -146,18 +150,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCommAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommAdminActionPerformed
-  CommJPanel commJPanel  = new  CommJPanel();
-// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
-//      
-splitPane.setRightComponent(commJPanel);
-//      UserLogin userlogin = new UserLogin(userProcessContainer, userHistory);
-//        userProcessContainer.add("UserLogin", userlogin);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-//        AdminWorkAreaJPanel awajp = new AdminWorkAreaJPanel(userProcessContainer, supplierDirectory);
-//        userProcessContainer.add("AdminWorkAreaJPanel",awajp);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+//  CommJPanel commJPanel  = new  CommJPanel();
+//// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
+////      
+//splitPane.setRightComponent(commJPanel);
+        CommLoginJPanel ls = new CommLoginJPanel(userProcessContainer,commHistory);
+        userProcessContainer.add("CommLoginJPanel", ls);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnCommAdminActionPerformed
 

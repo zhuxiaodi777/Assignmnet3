@@ -3,42 +3,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author judy
- */
+
+
 public class CommHistory {
-    
-    private ArrayList<CommProfile> history;
+    private List<CommProfile> commhistory;
     
     public CommHistory(){
-        
-        this.history= new ArrayList<CommProfile>();
-        
+        commhistory=new ArrayList<CommProfile>();
     }
 
-    public ArrayList<CommProfile> getHistory() {
-        return history;
+    public List<CommProfile> getCommhistory() {
+        return commhistory;
     }
 
-    public void setHistory(ArrayList<CommProfile> history) {
-        this.history = history;
+    public void setCommhistory(List<CommProfile> commhistory) {
+        this.commhistory = commhistory;
     }
     
-    
-    public CommProfile addNewUser(){
-        
-        CommProfile newComm = new CommProfile();
-        history.add(newComm);
-        return newComm;
+    public CommProfile addProfile(){
+        CommProfile comm=new CommProfile();
+        commhistory.add(comm);
+        return comm;
     }
     
-//    public void deleteEmplo(UserProfile ep) {
-//        history.remove(ep);
-//         
-//    }
+    public void removeComm(CommProfile comm) {
+        commhistory.remove(comm);
+    }
     
+    public CommProfile searchComm(String email, String password) {
+        for (CommProfile comm : commhistory) {
+            if ((comm.getEmailAddress().equals(email))&&((comm.getPassword().equals(password)))) {
+                return comm;
+            }
+        }
+        return null;
+    }
 }
