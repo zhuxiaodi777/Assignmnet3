@@ -5,13 +5,15 @@
  */
 package ui;
 
+import doctor.UI.DoctorLoginJPanel;
 import java.awt.CardLayout;
+import model.DoctorHistory;
+import model.DoctorProfile;
 import model.UserHistory;
 import ui.comm.CommJPanel;
 import ui.admin.AdminJPanel;
 //import model.SupplierDirectory;
 //import ui.AdminRole.AdminWorkAreaJPanel;
-//import ui.SupplierRole.LoginSupplierJPanel;
 import ui.user.UserLogin;
 
 /**
@@ -25,11 +27,15 @@ public class MainJFrame extends javax.swing.JFrame {
      */
 //    SupplierDirectory supplierDirectory;
     UserHistory userHistory;
+    DoctorHistory doctorDirectory;
+    DoctorProfile doctor;
     
     
     public MainJFrame() {
         initComponents();
-//        supplierDirectory = new SupplierDirectory();
+        doctor = new DoctorProfile();
+        doctorDirectory= new DoctorHistory();
+
 //        setSize(830,600);
     }
 
@@ -156,10 +162,10 @@ splitPane.setRightComponent(commJPanel);
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
 
-//        LoginSupplierJPanel ls = new LoginSupplierJPanel(userProcessContainer, supplierDirectory);
-//        userProcessContainer.add("LoginSupplierJPanel", ls);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        DoctorLoginJPanel ls = new DoctorLoginJPanel(userProcessContainer,doctorDirectory);
+        userProcessContainer.add("DoctorLoginJPanel", ls);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDoctorActionPerformed
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed

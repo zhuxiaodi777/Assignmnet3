@@ -4,6 +4,7 @@
  */
 package model;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -11,17 +12,17 @@ import java.util.ArrayList;
  * @author yongxingnie
  */
 public class DoctorHistory {
-     private ArrayList<DoctorProfile> doctorhistory;
+    private List<DoctorProfile> doctorhistory;
     
     public DoctorHistory(){
-        this.doctorhistory=new ArrayList<DoctorProfile>();
+        doctorhistory=new ArrayList<DoctorProfile>();
     }
 
-    public ArrayList<DoctorProfile> getDoctorhistory() {
+    public List<DoctorProfile> getDoctorhistory() {
         return doctorhistory;
     }
 
-    public void setDoctorhistory(ArrayList<DoctorProfile> doctorhistory) {
+    public void setDoctorhistory(List<DoctorProfile> doctorhistory) {
         this.doctorhistory = doctorhistory;
     }
     

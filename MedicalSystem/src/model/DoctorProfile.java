@@ -18,6 +18,13 @@ public class DoctorProfile {
     private String email;
     private Icon photo;
     private String specialty;
+    private String password;
+    
+    private EncounterHistory encounterHistory;
+    
+    public DoctorProfile(){
+        encounterHistory=new EncounterHistory();
+    }
 
     public String getName() {
         return name;
@@ -82,4 +89,27 @@ public class DoctorProfile {
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public EncounterHistory getEncounterHistory() {
+        return encounterHistory;
+    }
+
+    public void setEncounterHistory(EncounterHistory encounterHistory) {
+        this.encounterHistory = encounterHistory;
+    }
+
+    @Override
+    public String toString(){
+        return name;
+    }
+    
+    
 }
