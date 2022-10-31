@@ -198,12 +198,12 @@ public class UserView extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jbtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtUpdateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbtUpdateDate)))
+                        .addComponent(jbtUpdateDate))
+                    .addComponent(btnBack))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -290,19 +290,19 @@ public class UserView extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
          model.setRowCount(0);
         
-//        for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
-//            Object[] row = new Object[7];
-//            //        private String name;
-//            row[0] = ep;
-//            row[1] = ep.getName();
-//            row[2] = ep.getCommunity();
-//            row[3] = ep.getCity();
-//            row[4] = ep.getHospital();
-//            row[5] = ep.getEmail();
-//            row[6] = ep.getSpecialty();
-//            
-//            model.addRow(row);
-
+        for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
+            Object[] row = new Object[7];
+            //        private String name;
+            row[0] = ep;
+            row[1] = ep.getName();
+            row[2] = ep.getCommunity();
+            row[3] = ep.getCity();
+            row[4] = ep.getHospital();
+            row[5] = ep.getEmail();
+            row[6] = ep.getSpecialty();
+            
+            model.addRow(row);
+        }
 //         for (UserProfile ep : userHistory.getHistory()){
 //            Object[] row = new Object[7];
 //            row[0] = ep;
