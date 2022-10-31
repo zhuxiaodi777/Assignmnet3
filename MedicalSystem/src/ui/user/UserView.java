@@ -5,7 +5,10 @@
 package ui.user;
 
 import java.awt.CardLayout;
+import java.awt.Image;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -28,15 +31,18 @@ public class UserView extends javax.swing.JPanel {
     UserHistory userHistory;
     DoctorHistory doctorHistory;
     private DefaultTableModel model;
-    DoctorProfile doctorProfile;
+    Order currentOrder;
+    
     public UserView(JPanel userProcessContainer,DoctorHistory doctorHistory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userHistory = userHistory;
         this.doctorHistory= doctorHistory;
 //        this.doctorProfile= doctorProfile;
+        this.currentOrder= new Order();
         
         populateTable();
+        populateCartTable();
     }
     
 
@@ -137,6 +143,11 @@ public class UserView extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblUserRecord);
 
         jbtRecordDate.setText("RecordDate");
+        jbtRecordDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtRecordDateActionPerformed(evt);
+            }
+        });
 
         txtRecordDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +278,49 @@ public class UserView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRecordDateActionPerformed
 
+    private void jbtRecordDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRecordDateActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRowIndex = tblDoctor.getSelectedRow();
+        if (selectedRowIndex < 0) {
+//            JOptionPane.showMessageDialog(this,"");
+            return;
+        }
+        DoctorProfile doctorProfile = (DoctorProfile) tblDoctor.getValueAt(selectedRowIndex, 0);
+        String RecordDate;
+        
+        try {
+            
+            RecordDate = txtRecordDate.getText();
+            
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this,"");
+            return;
+            
+        }
+        
+        
+        OrderItem item = currentOrder.findDoctor(doctorProfile);
+        
+        if (item == null ){
+            currentOrder.addNewOrderItem(doctorProfile,RecordDate);
+        }
+        else {
+                if(item.getDoctorProfile().getName() == null){
+                    JOptionPane.showMessageDialog(this,"");
+                    return;
+                }
+                
+                item.getDoctorProfile().setName(item.getDoctorProfile().getName());
+                item.setRecordDate(RecordDate);
+            
+                }
+        populateTable();
+        populateCartTable();
+    }//GEN-LAST:event_jbtRecordDateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -288,7 +342,7 @@ public class UserView extends javax.swing.JPanel {
     private void populateTable(){
         
         DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
-         model.setRowCount(0);
+        model.setRowCount(0);
         
         for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
             Object[] row = new Object[7];
@@ -303,42 +357,30 @@ public class UserView extends javax.swing.JPanel {
             
             model.addRow(row);
         }
-//         for (UserProfile ep : userHistory.getHistory()){
-//            Object[] row = new Object[7];
-//            row[0] = ep;
-////            row[1] = ep.getEmployeeId();
-//            row[1] = String.valueOf(ep.getAge());
-//            row[2] = String.valueOf(ep.getGender());
-////            row[4] = ep.getStartDate();
-////            row[5] = ep.getLevel();
-////            row[6] = ep.getTeamInfo();
-////            row[7] = ep.getPositionTitle();
-////            row[8] = ep.getCellPhoneNumber();
-//            row[3] = String.valueOf(ep.getEmailAddress());
-//            row[4] = String.valueOf(ep.getEmailAddress());
-//            row[5] = String.valueOf(ep.getEmailAddress());
-//            row[6] = String.valueOf(ep.getEmailAddress());
-//            model.addRow(row);
             
         }
     
     
     
     private void populateCartTable(){
-
-
-        DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
+        
+       DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
         model.setRowCount(0);
-//        for (OrderItem oi :currentOrder.getOrderItemlist()) {
-//            
-//            
-//            Object row[] = new Object[3];
-//            row[0] = oi;
-//            row[1] = oi.getSalesPrice();
-//            row[2] = oi.getQuantity();
-//            row[2] = oi.getQuantity()* oi.getSalesPrice();
-//            model.addRow(row);
-//        }
+//        cmb  
+        for (OrderItem ep :currentOrder.getOrderItemlist()) {
+            Object[] row = new Object[8];
+            
+            row[0] = ep;
+            row[1] = ep.getDoctorProfile().getName();
+            row[2] = ep.getDoctorProfile().getCommunity();
+            row[3] = ep.getDoctorProfile().getCity();
+            row[4] = ep.getDoctorProfile().getHospital();
+            row[5] = ep.getDoctorProfile().getEmail();
+            row[6] = ep.getDoctorProfile().getSpecialty();
+            row[7] = ep.getRecordDate();
+            model.addRow(row);
+        }
+        
         
      }   
     
