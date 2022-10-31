@@ -6,6 +6,7 @@ package doctor.UI;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Encounter;
 
@@ -22,8 +23,8 @@ public class ViewEncounterJPanel extends javax.swing.JPanel {
     private Encounter encounter;
     public ViewEncounterJPanel(JPanel upc, Encounter e) {
         initComponents();
-        this.userProcessContainer=upc;
-        this.encounter=e;
+        userProcessContainer=upc;
+        encounter=e;
         
         jTextField1.setText(e.getName());
         jTextField2.setText(String.valueOf(e.getTemperature()));
@@ -154,6 +155,8 @@ public class ViewEncounterJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         jTextField1.setEditable(true);
         encounter.setName(jTextField1.getText());
+        
+        JOptionPane.showMessageDialog(this, "Encounter info has been updated!");
     }//GEN-LAST:event_UpdateBtnActionPerformed
 
 

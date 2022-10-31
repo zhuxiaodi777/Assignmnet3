@@ -30,13 +30,17 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private final JFileChooser openFileChooser;
     private BufferedImage img;
-    public DoctorRegisterWorkAreaJPanel(JPanel userProcessContainer, DoctorHistory doctorDirectory) {
+    
+    public DoctorRegisterWorkAreaJPanel(JPanel upc, DoctorHistory ds) {
         initComponents();
-        this.doctorDirectory=doctorDirectory;
-        this.userProcessContainer=userProcessContainer;
+        userProcessContainer=upc;
+        doctorDirectory=ds;
         
         openFileChooser=new JFileChooser();
         openFileChooser.setCurrentDirectory(new File("c:\\Desktop"));
+        
+        
+        
         
     }
 
@@ -259,6 +263,7 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
 
     private void UploadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadBtnActionPerformed
         // TODO add your handling code here:
+        
         int returnValue=openFileChooser.showOpenDialog(this);
 
         if(returnValue==JFileChooser.APPROVE_OPTION){
@@ -268,10 +273,11 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
                 doctor.setPhoto(jLabel12.getIcon());
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(this, "Photo uploading failed!");
+                jLabel12.setText("Photo loading failed!");
             }
+            jLabel12.setText("Photo upload successfully!");
         }else{
-            JOptionPane.showMessageDialog(this, "Please choose a photo!");
+            jLabel12.setText("Please Choose a photo!");
         }
     }//GEN-LAST:event_UploadBtnActionPerformed
 
@@ -290,7 +296,7 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
         // TODO add your handling code here:
         doctor=doctorDirectory.addProfile();
-
+        
         doctor.setName(jTextField1.getText());
         doctor.setID(jTextField2.getText());
         doctor.setEmail(jTextField3.getText());
@@ -299,6 +305,7 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
         doctor.setCommunity(jTextField6.getText());
         doctor.setCity(jTextField7.getText());
         doctor.setPassword(jTextField8.getText());
+        doctor.setPhoto(jLabel12.getIcon());
 
         JOptionPane.showMessageDialog(this, "Registration Successfully!");
 

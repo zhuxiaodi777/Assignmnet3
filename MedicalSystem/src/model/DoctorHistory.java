@@ -31,4 +31,17 @@ public class DoctorHistory {
         doctorhistory.add(doctor);
         return doctor;
     }
+    
+    public void removeDoctor(DoctorProfile doctor) {
+        doctorhistory.remove(doctor);
+    }
+    
+    public DoctorProfile searchDoctor(String email, String password) {
+        for (DoctorProfile doctor : doctorhistory) {
+            if ((doctor.getEmail().equals(email))&&((doctor.getPassword().equals(password)))) {
+                return doctor;
+            }
+        }
+        return null;
+    }
 }

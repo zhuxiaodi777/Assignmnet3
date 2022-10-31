@@ -20,10 +20,20 @@ public class PersonalInfoJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     DoctorProfile doctor;
-    public PersonalInfoJPanel(JPanel upc, DoctorProfile doctor) {
+    public PersonalInfoJPanel(JPanel upc, DoctorProfile d) {
         initComponents();
-        this.doctor=doctor;
+        doctor=d;
         userProcessContainer=upc;
+        
+        jTextField9.setText(doctor.getName());
+        jTextField10.setText(doctor.getID());
+        jTextField11.setText(doctor.getEmail());
+        jTextField12.setText(doctor.getPassword());
+        jTextField13.setText(doctor.getHospital());
+        jTextField14.setText(doctor.getSpecialty());
+        jTextField15.setText(doctor.getCommunity());
+        jTextField16.setText(doctor.getCity());
+        jLabel21.setIcon(doctor.getPhoto());
     }
 
     /**
@@ -333,15 +343,8 @@ public class PersonalInfoJPanel extends javax.swing.JPanel {
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewBtnActionPerformed
         // TODO add your handling code here:
-        jTextField9.setText(doctor.getName());
-        jTextField10.setText(doctor.getID());
-        jTextField11.setText(doctor.getEmail());
-        jTextField12.setText(doctor.getPassword());
-        jTextField13.setText(doctor.getHospital());
-        jTextField14.setText(doctor.getSpecialty());
-        jTextField15.setText(doctor.getCommunity());
-        jTextField16.setText(doctor.getCity());
-        jLabel21.setIcon(doctor.getPhoto());
+        
+        
     }//GEN-LAST:event_ViewBtnActionPerformed
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed

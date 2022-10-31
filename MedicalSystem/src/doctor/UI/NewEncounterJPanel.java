@@ -22,10 +22,10 @@ public class NewEncounterJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private DoctorProfile doctor;
-    public NewEncounterJPanel(JPanel upc, DoctorProfile doctor) {
+    public NewEncounterJPanel(JPanel upc, DoctorProfile d) {
         initComponents();
-        this.userProcessContainer=upc;
-        this.doctor=doctor;
+        userProcessContainer=upc;
+        doctor=d;
         
         
     }

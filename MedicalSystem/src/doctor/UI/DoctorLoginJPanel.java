@@ -4,6 +4,7 @@
  */
 package doctor.UI;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.DoctorHistory;
 import model.DoctorProfile;
@@ -20,10 +21,11 @@ public class DoctorLoginJPanel extends javax.swing.JPanel {
     private DoctorHistory doctorDirectory;
     private DoctorProfile doctor;
     private JPanel userProcessContainer; 
-    public DoctorLoginJPanel(JPanel upc, DoctorHistory doctorDirectory) {
+    public DoctorLoginJPanel(JPanel upc, DoctorHistory ds) {
         initComponents();
         userProcessContainer = upc;
-        doctorDirectory=doctorDirectory;
+        doctorDirectory=ds;
+        
         
         
         
@@ -114,17 +116,20 @@ public class DoctorLoginJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        // TODO add your handling code here:
+        
         String email=jTextField1.getText();
         String pw=jTextField1.getText();
+        doctor=doctorDirectory.searchDoctor(email,pw);
+        if(doctor==null){
+            JOptionPane.showMessageDialog(this, "Please input correct Email address and Password!");
+        }else{
+            
         
-        //if(email.contains(email)&&(pw.contains(pw))){}
-        //need to verify the login
         DoctorWorkAreaJPanel swajp = new DoctorWorkAreaJPanel(userProcessContainer, doctor);
         userProcessContainer.add("DoctorWorkAreaJPanel", swajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-                                           
+        }                                   
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed

@@ -22,10 +22,10 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private DoctorProfile doctor;
-    public ManagePatientsRecordJPanel(JPanel upc, DoctorProfile doctor) {
+    public ManagePatientsRecordJPanel(JPanel upc, DoctorProfile d) {
         initComponents();
-        this.userProcessContainer=upc;
-        this.doctor=doctor;
+        userProcessContainer=upc;
+        doctor=d;
         
         refreshTable();
     }
@@ -35,13 +35,13 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
-        //for (Encounter e : doctor.getEncounterHistory().getEncounterhis()) {
-        //    Object row[] = new Object[3];
-        //    row[0] = e;
-        //    row[1] = e.getTemperature();
-        //    row[2] = e.getBloodPressure();
-        //    model.addRow(row);
-        //}
+        for (Encounter e : doctor.getEncounterHistory().getEncounterhis()) {
+            Object row[] = new Object[3];
+            row[0] = e;
+            row[1] = e.getTemperature();
+            row[2] = e.getBloodPressure();
+            model.addRow(row);
+        }
     } 
 
     /**
@@ -214,7 +214,9 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
             return;
         }
         Encounter e = (Encounter) jTable1.getValueAt(selectedRowIndex, 0);
+        
         doctor.getEncounterHistory().removeEncounter(e);
+        JOptionPane.showMessageDialog(null, "Encounter deleted successfully", "Warning", JOptionPane.WARNING_MESSAGE);
         refreshTable();
         
     }//GEN-LAST:event_DeleteBtnActionPerformed
