@@ -22,4 +22,7 @@ The system admin is the only one that could CRUD all branch systems’ informati
 Run
 This proejct was written on Netbeans by Java.
 
+User Cases
+![截屏2022-11-01 下午2 51 42](https://user-images.githubusercontent.com/113845857/199314696-eff26bca-93d9-4a3a-84c6-12e8e8fabd86.png)
+
 Class Diagram
