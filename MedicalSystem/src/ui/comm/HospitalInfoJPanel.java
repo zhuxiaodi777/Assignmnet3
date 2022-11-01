@@ -8,8 +8,9 @@ import  ui.comm.*;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.HospitalProfile;
+import model.HospitalHistory;
 import model.CommProfile;
-import model.CommHistory;
 
 
 public class HospitalInfoJPanel extends javax.swing.JPanel {
@@ -18,29 +19,18 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
      * Creates new form HospitalInfoJPanel
      */
 
-   CommHistory commHistory ;
-    CommProfile commprofile;
+   HospitalHistory hospitalHistory ;
+    HospitalProfile hospitalProfile;
     private JPanel userProcessContainer;
-    CommProfile comm;
-    public HospitalInfoJPanel(JPanel upc, CommProfile d) {
+    HospitalProfile hospital;
+CommProfile comm;
+    public HospitalInfoJPanel(JPanel upc, HospitalProfile d,CommProfile comm) {
         initComponents();
-         comm=d;
         userProcessContainer=upc;
-        this.comm=comm;
+        this.hospital=d;
+       this.comm = comm;
         this.userProcessContainer=userProcessContainer;
 
-
-
-
-//System.out.println("=============================");
-//System.out.println("==///////////////////////////===");
-//        jTextField9.setText(comm.getCommName());
-//        jTextField10.setText(comm.getCommId());
-//        jTextField11.setText(comm.getEmailAddress());
-//        jTextField12.setText(comm.getAddress());
-//        jTextField13.setText(comm.getHospital());
-//        jTextField14.setText(comm.getPassword());
-// 
     }
 
     /**
@@ -77,13 +67,11 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        txtCommName = new javax.swing.JTextField();
-        txtCommID1 = new javax.swing.JTextField();
+        txtHospitalName = new javax.swing.JTextField();
+        txtCommID = new javax.swing.JTextField();
         txtEmailAddress = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
-        txtHospital = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         BtnSave = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
@@ -157,26 +145,23 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
         jLabel1.setText("Hospital Infomation");
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel10.setText("Name:");
+        jLabel10.setText("HospitalName:");
 
         jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel14.setText("Address:");
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel11.setText("ID:");
+        jLabel11.setText("CommID:");
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel15.setText("Email:");
-
-        jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel16.setText("Hospital:");
+        jLabel15.setText("EmailAddress:");
 
         jLabel17.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel17.setText("Password:");
 
-        txtCommName.addActionListener(new java.awt.event.ActionListener() {
+        txtHospitalName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCommNameActionPerformed(evt);
+                txtHospitalNameActionPerformed(evt);
             }
         });
 
@@ -204,36 +189,35 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel15)))
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel14)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(BackBtn)
-                                .addGap(82, 82, 82)))
+                                .addComponent(BackBtn)))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCommName, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                .addComponent(txtCommID1)
-                                .addComponent(txtEmailAddress)
-                                .addComponent(txtAddress)
-                                .addComponent(txtHospital)
-                                .addComponent(txtPassword))
+                            .addComponent(txtHospitalName, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(txtCommID)
+                            .addComponent(txtEmailAddress)
+                            .addComponent(txtAddress)
+                            .addComponent(txtPassword)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
+                        .addGap(201, 201, 201)
                         .addComponent(BtnSave)))
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel14, jLabel15, jLabel17});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAddress, txtCommID, txtEmailAddress, txtHospitalName, txtPassword});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -244,31 +228,32 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtCommName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtCommID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCommID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(50, 50, 50)
                 .addComponent(BtnSave)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel11, jLabel14, jLabel15, jLabel17});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAddress, txtCommID, txtEmailAddress, txtHospitalName, txtPassword});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -293,61 +278,61 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void txtCommNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCommNameActionPerformed
+    private void txtHospitalNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitalNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCommNameActionPerformed
+    }//GEN-LAST:event_txtHospitalNameActionPerformed
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
 
-// String CommName=null;
-//        
-//        try{
-//            CommName=txtCommName.getText();
-//            char[] arr=CommName.toCharArray();
-//            if(arr.length==0){
-//                JOptionPane.showMessageDialog(this, "The name cannot be null!");
-//                return;
-//            }
-//            for(char c: arr){
-//                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
-//                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
-//                    return;
-//                }
-//            }
-//            for(CommProfile d:commHistory.getCommhistory()) {
-//                if (commprofile.getCommName().equals(CommName)) {
-//                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
-//                    return;
-//                }
-//            }    
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Check the format of the name!");
-//            return;
-//        }
+ String HospitalName=null;
+        
+        try{
+            HospitalName=txtHospitalName.getText();
+            char[] arr=HospitalName.toCharArray();
+            if(arr.length==0){
+                JOptionPane.showMessageDialog(this, "The name cannot be null!");
+                return;
+            }
+            for(char c: arr){
+                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
+                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
+                    return;
+                }
+            }
+            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
+                if (hospitalProfile.getHospitalName().equals(HospitalName)) {
+                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the name!");
+            return;
+        }
 
-// String CommID=null;
-//        try{
-//            CommID=txtCommID1.getText();
-//            char[] arr=CommID.toCharArray();
-//            if(arr.length!=7){
-//                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
-//                return;
-//            }
-//            if(CommID.matches("[0-9]*")==false){
-//                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
-//                return;
-//            }
-//            
-//            for(CommProfile d:commHistory.getCommhistory()) {
-//                if (commprofile.getCommId().equals(CommID)) {
-//                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
-//                    return;
-//                }
-//            }    
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Check the format of the id!");
-//            return;
-//        }
+ String CommID=null;
+        try{
+            CommID=txtCommID.getText();
+            char[] arr=CommID.toCharArray();
+            if(arr.length!=7){
+                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
+                return;
+            }
+            if(CommID.matches("[0-9]*")==false){
+                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
+                return;
+            }
+            
+            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
+                if (hospitalProfile.getCommId().equals(CommID)) {
+                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the id!");
+            return;
+        }
 //
 //
 //String hospital=null;
@@ -413,22 +398,16 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 //        }
 
 
-
-//
-//        commprofile = commHistory.addProfile();
-//        
-//        commprofile.setCommName(txtCommName.getText());
-//        commprofile.setCommId(txtCommID1.getText());
-//        commprofile.setHospital(txtHospital.getText());
-//        commprofile.setAddress(txtAddress.getText());
-//        commprofile.setEmailAddress(txtEmailAddress.getText());
-//        commprofile.setPassword(txtPassword.getText());
-//
+        hospitalProfile = hospitalHistory.addProfile();
+        hospitalProfile.setHospitalName(txtHospitalName.getText());
+        hospitalProfile.setCommId(txtCommID.getText());
+        hospitalProfile.setAddress(txtAddress.getText());
+        hospitalProfile.setEmailAddress(txtEmailAddress.getText());
+        hospitalProfile.setPassword(txtPassword.getText());
         JOptionPane.showMessageDialog(this,"Registered Successful");
 
-        txtCommName.setText("");
-        txtCommID1.setText("");
-        txtHospital.setText("");
+        txtHospitalName.setText("");
+        txtCommID.setText("");
         txtAddress.setText("");
         txtEmailAddress.setText("");
         txtPassword.setText("");
@@ -463,7 +442,6 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -482,10 +460,9 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtCommID1;
-    private javax.swing.JTextField txtCommName;
+    private javax.swing.JTextField txtCommID;
     private javax.swing.JTextField txtEmailAddress;
-    private javax.swing.JTextField txtHospital;
+    private javax.swing.JTextField txtHospitalName;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

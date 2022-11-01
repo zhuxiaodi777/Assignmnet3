@@ -126,11 +126,18 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
 
     private void HospitalInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HospitalInfoBtnActionPerformed
         // TODO add your handling code here:
-        HospitalInfoJPanel mpcjp = new HospitalInfoJPanel(userProcessContainer, comm);
-        userProcessContainer.add("HospitalInfoJPanel", mpcjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-       
+//        HospitalInfoJPanel mpcjp = new HospitalInfoJPanel(userProcessContainer, comm);
+//        userProcessContainer.add("HospitalInfoJPanel", mpcjp);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+//       
+
+
+
+
+
+
+
     }//GEN-LAST:event_HospitalInfoBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

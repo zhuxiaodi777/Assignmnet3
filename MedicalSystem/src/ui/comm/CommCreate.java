@@ -241,8 +241,8 @@ public class CommCreate extends javax.swing.JPanel {
         try{
             CommID=txtCommID.getText();
             char[] arr=CommID.toCharArray();
-            if(arr.length!=7){
-                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
+            if(arr.length!=4){
+                JOptionPane.showMessageDialog(this, "The ID length should be 4!");
                 return;
             }
             if(CommID.matches("[0-9]*")==false){

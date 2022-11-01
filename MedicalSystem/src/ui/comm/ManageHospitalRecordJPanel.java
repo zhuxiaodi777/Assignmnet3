@@ -8,9 +8,14 @@ import ui.comm.*;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 //import javax.swing.table.DefaultTableModel;
 import model.CommProfile;
+import model.UserHistory;
+import model.UserProfile;
 //import model.Encounter;
+import model.HospitalHistory;
+import model.HospitalProfile;
 
 
 public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
@@ -20,11 +25,15 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private CommProfile comm;
+private DefaultTableModel model;
+   HospitalHistory HospitalHistory;
+    HospitalProfile hospital;
+    
     public ManageHospitalRecordJPanel(JPanel upc, CommProfile d) {
         initComponents();
         userProcessContainer=upc;
         comm=d;
-        
+         populateHospitalTable();
       //  refreshTable();
     }
     
@@ -54,10 +63,16 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        NewEncounterBtn = new javax.swing.JButton();
-        ViewDetailBtn = new javax.swing.JButton();
-        DeleteBtn = new javax.swing.JButton();
+        tblHospital = new javax.swing.JTable();
+        jbtDelete1 = new javax.swing.JButton();
+        jbtUpdateDate1 = new javax.swing.JButton();
+        txtname1 = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtEmailAddress = new javax.swing.JTextField();
+        txtGender = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setText("Manage Hospital Records");
@@ -70,69 +85,112 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Hospital", "Address", "Community"
+                "HospitalName", "CommID", "EmailAddress", "Password", "Address"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, false
-            };
+        ));
+        jScrollPane1.setViewportView(tblHospital);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        NewEncounterBtn.setText("Update");
-        NewEncounterBtn.addActionListener(new java.awt.event.ActionListener() {
+        jbtDelete1.setText("Delete");
+        jbtDelete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewEncounterBtnActionPerformed(evt);
+                jbtDelete1ActionPerformed(evt);
             }
         });
 
-        ViewDetailBtn.setText("View Details");
-        ViewDetailBtn.addActionListener(new java.awt.event.ActionListener() {
+        jbtUpdateDate1.setText("UpdateDate");
+        jbtUpdateDate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewDetailBtnActionPerformed(evt);
+                jbtUpdateDate1ActionPerformed(evt);
             }
         });
 
-        DeleteBtn.setText("Delete");
-        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        txtname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteBtnActionPerformed(evt);
+                txtname1ActionPerformed(evt);
             }
         });
+
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+
+        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailAddressActionPerformed(evt);
+            }
+        });
+
+        txtGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGenderActionPerformed(evt);
+            }
+        });
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel2.setText("search");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jButton1)
+                            .addGap(170, 170, 170)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(41, 41, 41)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton1)
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(NewEncounterBtn)
-                                .addGap(47, 47, 47)
-                                .addComponent(ViewDetailBtn)
-                                .addGap(59, 59, 59)
-                                .addComponent(DeleteBtn))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtname1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(115, 115, 115)
+                        .addComponent(jbtUpdateDate1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtDelete1)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,11 +206,22 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtUpdateDate1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NewEncounterBtn)
-                    .addComponent(ViewDetailBtn)
-                    .addComponent(DeleteBtn))
-                .addContainerGap(230, Short.MAX_VALUE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,50 +232,92 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void NewEncounterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewEncounterBtnActionPerformed
-        // TODO add your handling code here:
-//        NewEncounterJPanel cnpjp = new NewEncounterJPanel(userProcessContainer, doctor);
-//        userProcessContainer.add("CreateNewProductJPanel", cnpjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-    }//GEN-LAST:event_NewEncounterBtnActionPerformed
-
-    private void ViewDetailBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetailBtnActionPerformed
-        // TODO add your handling code here:
-//        int selectedRowIndex = jTable1.getSelectedRow();
-//        if (selectedRowIndex < 0) {
-//            JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-//        }
-//        
-//        Encounter e = (Encounter) jTable1.getValueAt(selectedRowIndex, 0);
-//        
-//        ViewEncounterJPanel vpdjp = new ViewEncounterJPanel(userProcessContainer, e);
-//        userProcessContainer.add("ViewProductDetailJPanel", vpdjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-    }//GEN-LAST:event_ViewDetailBtnActionPerformed
-
-    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-//        Encounter e = (Encounter) jTable1.getValueAt(selectedRowIndex, 0);
-//        
-//        doctor.getEncounterHistory().removeEncounter(e);
-//        JOptionPane.showMessageDialog(null, "Encounter deleted successfully", "Warning", JOptionPane.WARNING_MESSAGE);
-//        refreshTable();
-        
-    }//GEN-LAST:event_DeleteBtnActionPerformed
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
 //        String ss = txtSearch.getText();
 //        search(ss);
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jbtDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDelete1ActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRowIndex = tblHospital.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        HospitalProfile se = (HospitalProfile) model.getValueAt(selectedRowIndex, 0);
+
+        HospitalHistory.removeHospital(se);
+
+        JOptionPane.showMessageDialog(this, "User Profile Deleted");
+
+        populateHospitalTable();
+    }//GEN-LAST:event_jbtDelete1ActionPerformed
+
+    private void jbtUpdateDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateDate1ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+
+        DefaultTableModel model=(DefaultTableModel)tblHospital.getModel();
+        int row=tblHospital.getSelectedRow();
+
+        if(txtname1.getText().length()==0
+            || txtAge.getText().length()==0
+            || txtGender.getText().length()==0
+            || txtEmailAddress.getText().length()==0
+            || txtPassword.getText().length()==0
+            //|| txtspecialty.getText().length()==0
+        ){
+            JOptionPane.showMessageDialog(this, "Check the format!");
+            return;
+        }
+
+        model.setValueAt(txtname1.getText(), row, 0);
+        model.setValueAt(txtAge.getText(), row, 1);
+        model.setValueAt(txtGender.getText(), row, 2);
+        model.setValueAt(txtEmailAddress.getText(), row, 3);
+        model.setValueAt(txtPassword.getText(), row, 4);
+
+        txtname1.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtEmailAddress.setText("");
+        txtPassword.setText("");
+    }//GEN-LAST:event_jbtUpdateDate1ActionPerformed
+
+    private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtname1ActionPerformed
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
+
+    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailAddressActionPerformed
+
+    private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGenderActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String ss = txtSearch.getText();
+       HospitalHistory.searchHospital(ss,ss);
+    }//GEN-LAST:event_txtSearchKeyReleased
     
     //public void search (String str){
     //    
@@ -215,15 +326,37 @@ public class ManageHospitalRecordJPanel extends javax.swing.JPanel {
     //    jTable1.setRowSorter(trs);
     //    trs.setRowFilter(RowFilter.regexFilter(str,cmbsearch.getSelectedIndex()));
     //}
-    
+      private void populateHospitalTable(){
+        DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        model.setRowCount(0);
+//        cmb  
+        for (HospitalProfile ep :HospitalHistory.getHospitalhistory()) {
+            Object[] row = new Object[5];
+            
+            row[0] = ep.getHospitalName();
+            row[1] = ep.getCommId();
+            row[2] = ep.getEmailAddress();
+            row[3] = ep.getPassword();
+            row[4] = ep.getAddress();
+            model.addRow(row);
+        }
+        
+        
+     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DeleteBtn;
-    private javax.swing.JButton NewEncounterBtn;
-    private javax.swing.JButton ViewDetailBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtDelete1;
+    private javax.swing.JButton jbtUpdateDate1;
+    private javax.swing.JTable tblHospital;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtEmailAddress;
+    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtname1;
     // End of variables declaration//GEN-END:variables
 }
