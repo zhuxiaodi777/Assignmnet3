@@ -15,18 +15,18 @@ import model.DoctorProfile;
  */
 public class Order {
     
-    List<OrderItem> orderItemlist;
+    ArrayList<OrderItem> orderItemlist;
     
     public Order() {
         this.orderItemlist = new ArrayList<OrderItem>();
         
     }
 
-    public List<OrderItem> getOrderItemlist() {
+    public ArrayList<OrderItem> getOrderItemlist() {
         return orderItemlist;
     }
 
-    public void setOrderItemlist(List<OrderItem> orderItemlist) {
+    public void setOrderItemlist(ArrayList<OrderItem> orderItemlist) {
         this.orderItemlist = orderItemlist;
     }
     

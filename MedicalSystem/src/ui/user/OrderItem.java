@@ -37,7 +37,13 @@ public class OrderItem {
     public void setRecordDate(String recordDate) {
         this.recordDate = recordDate;
     }
-
+    
+    @Override
+    public String toString() {
+        
+        return this.doctorProfile.toString();
+        
+    }
 
 
 }
