@@ -118,7 +118,7 @@ public class DoctorLoginJPanel extends javax.swing.JPanel {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         
         String email=jTextField1.getText();
-        String pw=jTextField1.getText();
+        String pw=jTextField2.getText();
         doctor=doctorDirectory.searchDoctor(email,pw);
         if(doctor==null){
             JOptionPane.showMessageDialog(this, "Please input correct Email address and Password!");

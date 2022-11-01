@@ -8,6 +8,8 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -295,6 +297,146 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
         // TODO add your handling code here:
+        String name=null;
+        
+        try{
+            name=jTextField1.getText();
+            char[] arr=name.toCharArray();
+            if(arr.length==0){
+                JOptionPane.showMessageDialog(this, "The name cannot be null!");
+                return;
+            }
+            for(char c: arr){
+                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
+                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
+                    return;
+                }
+            }
+            for(DoctorProfile d:doctorDirectory.getDoctorhistory()) {
+                if (doctor.getName().equals(name)) {
+                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the name!");
+            return;
+        }
+        
+        String id=null;
+        try{
+            id=jTextField2.getText();
+            char[] arr=id.toCharArray();
+            if(arr.length!=7){
+                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
+                return;
+            }
+            if(id.matches("[0-9]*")==false){
+                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
+                return;
+            }
+            
+            for(DoctorProfile d:doctorDirectory.getDoctorhistory()) {
+                if (doctor.getID().equals(id)) {
+                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the name!");
+            return;
+        }
+        
+        String email=null;
+        try{
+            email=jTextField3.getText();
+           
+            if((email.contains("@"))==false||email.contains(".")==false){
+               JOptionPane.showMessageDialog(this, "Please input a correct email!");
+                return; 
+            }
+          
+            for(DoctorProfile d:doctorDirectory.getDoctorhistory()) {
+                if (doctor.getEmail().equals(email)) {
+                    JOptionPane.showMessageDialog(this, "The email has already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
+        String hospital=null;
+        try{
+            hospital=jTextField4.getText();
+           
+            if(hospital.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a hospital");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
+        String Specialty=null;
+        try{
+            Specialty=jTextField5.getText();
+           
+            if(Specialty.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a Specialty");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
+        String Community=null;
+        try{
+            Community=jTextField6.getText();
+           
+            if(Community.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a Community");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
+        String city=null;
+        try{
+            city=jTextField7.getText();
+           
+            if(city.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a city");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
+        String password=null;
+        try{
+            password=jTextField8.getText();
+           
+            if(password.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a password");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
         doctor=doctorDirectory.addProfile();
         
         doctor.setName(jTextField1.getText());

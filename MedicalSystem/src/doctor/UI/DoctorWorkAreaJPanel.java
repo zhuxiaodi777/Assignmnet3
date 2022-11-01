@@ -40,7 +40,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         PersonalInfoBtn = new javax.swing.JButton();
         ViewPatientRecords = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        LogOutBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -65,42 +64,31 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setText("Welcome, Doctors!");
 
-        LogOutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        LogOutBtn.setText("LogOut");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(LogOutBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(PersonalInfoBtn)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(ViewPatientRecords)
-                        .addGap(28, 28, 28))))
+                        .addGap(23, 23, 23))
+                    .addComponent(PersonalInfoBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
-                .addGap(62, 62, 62)
+                .addGap(102, 102, 102)
                 .addComponent(PersonalInfoBtn)
-                .addGap(68, 68, 68)
+                .addGap(90, 90, 90)
                 .addComponent(ViewPatientRecords)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                .addComponent(LogOutBtn)
-                .addGap(50, 50, 50))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -151,7 +139,6 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton PersonalInfoBtn;
     private javax.swing.JButton ViewPatientRecords;
     private javax.swing.JLabel jLabel1;
