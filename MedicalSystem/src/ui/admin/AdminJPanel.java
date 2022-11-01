@@ -135,8 +135,13 @@ JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
 //     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //     layout.next(userProcessContainer);
 
- AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, admin);
-     userProcessContainer.add("AdminAccountJPanel", ass);
+// AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, admin);
+//     userProcessContainer.add("AdminAccountJPanel", ass);
+//     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//     layout.next(userProcessContainer);
+
+ AdminManageAccountJPanel ama = new AdminManageAccountJPanel(userProcessContainer, admin);
+     userProcessContainer.add("AdminManageAccountJPanel", ama);
      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
      layout.next(userProcessContainer);
 
