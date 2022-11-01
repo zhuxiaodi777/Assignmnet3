@@ -189,7 +189,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
 ////      
 //splitPane.setRightComponent(adminJPanel);
-  AdminJPanel ls = new AdminJPanel(userProcessContainer,adminDirectory,doctorDirectory);
+  AdminJPanel ls = new AdminJPanel(userProcessContainer,adminDirectory,doctorDirectory,userHistory);
         userProcessContainer.add("AdminJPanel", ls);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

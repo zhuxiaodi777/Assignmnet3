@@ -72,4 +72,8 @@ public class UserProfile {
     }
     private String Password;
     
+    @Override
+    public String toString(){
+        return Name;
+    }
 }

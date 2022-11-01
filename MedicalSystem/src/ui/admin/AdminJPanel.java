@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import model.AdminHistory;
 import model.AdminProfile;
 import model.DoctorHistory;
+import model.UserHistory;
 
 /**
  *
@@ -22,14 +23,16 @@ public class AdminJPanel extends javax.swing.JPanel {
     private AdminProfile admin;
     private JPanel userProcessContainer; 
     DoctorHistory doctorHistory;
+    UserHistory userHistory;
     /**
      * Creates new form ComJPanel
      */
-   public AdminJPanel(JPanel upc, AdminHistory ds,DoctorHistory dh) {
+   public AdminJPanel(JPanel upc, AdminHistory ds,DoctorHistory dh,UserHistory uh) {
         initComponents();
         userProcessContainer = upc;
         adminDirectory=ds;
         doctorHistory =dh;
+        userHistory = uh;
         
     }
 
@@ -137,7 +140,7 @@ JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
 //     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //     layout.next(userProcessContainer);
 
- AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, doctorHistory);
+ AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, doctorHistory,userHistory);
      userProcessContainer.add("AdminAccountJPanel", ass);
      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
      layout.next(userProcessContainer);
