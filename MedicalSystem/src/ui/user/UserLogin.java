@@ -158,23 +158,21 @@ public class UserLogin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        //        double temperature = Double.parseDouble(txtName.getText());
 
-        //        if (
-            //            txtUserId.getText().length() == 0
-            //            || txtEmail.getText().length() == 0
-            //            //                || txtAge.getText().length() == 0
-            //            //            || txtAge.getText().matches("^\\d{1,}$") == false
-            //
-            //        ) {
-            //            JOptionPane.showMessageDialog(this, "Please enter the correct format");
-            //            return;
-            //        }
-
+        
+          
+        
         String useremail = txtEmail.getText();
         String password = jpwpass.getText();
-        if ((useremail.contains("1")) && (password.contains("1"))) {
+        
+        userprofile=userHistory.searchUser(useremail,password);
+        
+        if(userprofile==null){
+            JOptionPane.showMessageDialog(this, "Please input correct Email address and Password!");
+        }else{
+          
+//        
+//        if ((useremail.contains("1")) && (password.contains("1"))) {
             
             UserView uv = new UserView(userProcessContainer, doctorhistory,recordhistory);
             userProcessContainer.add("ManageSupplierAdministrative", uv);
@@ -184,10 +182,10 @@ public class UserLogin extends javax.swing.JPanel {
             jpwpass.setText("");
             
         }
-        else {
-            JOptionPane.showMessageDialog(null,"Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
-
-        }
+//        else {
+//            JOptionPane.showMessageDialog(null,"Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
+//
+//        }
 
         //        EmployeeProfile ep = history.addNewEmployee();
         //

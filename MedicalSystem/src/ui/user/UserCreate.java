@@ -175,6 +175,51 @@ public class UserCreate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter the correct format");
             return;
         }
+        
+        String id=null;
+        try{
+            id=txtUserId.getText();
+            char[] arr=id.toCharArray();
+            if(arr.length!=7){
+                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
+                return;
+            }
+            if(id.matches("[0-9]*")==false){
+                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
+                return;
+            }
+            
+            for(UserProfile d:userHistory.getUserHistory()) {
+                if (userprofile.getUserId().equals(id)) {
+                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the id!");
+            return;
+        }
+        
+        String email=null;
+        try{
+            email=txtEmailAddress.getText();
+           
+            if((email.contains("@"))==false||email.contains(".")==false){
+               JOptionPane.showMessageDialog(this, "Please input a correct email!");
+                return; 
+            }
+          
+            for(UserProfile d:userHistory.getUserHistory()) {
+                if (userprofile.getEmailAddress().equals(email)) {
+                    JOptionPane.showMessageDialog(this, "The email has already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+        
 
         String name = txtName.getText();
         String userid = txtUserId.getText();

@@ -25,6 +25,14 @@ public class UserHistory {
         
     }
 
+    public ArrayList<UserProfile> getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(ArrayList<UserProfile> userHistory) {
+        this.userHistory = userHistory;
+    }
+
 
 
     public List<UserProfile> getHistory() {
@@ -47,6 +55,16 @@ public class UserHistory {
     public void deleteUser(UserProfile userProfile) {
         userHistory.remove(userProfile);
          
+    }
+    
+    
+    public UserProfile searchUser(String email, String password) {
+        for (UserProfile userProfile : userHistory) {
+            if ((userProfile.getEmailAddress().equals(email))&&((userProfile.getPassword().equals(password)))) {
+                return userProfile;
+            }
+        }
+        return null;
     }
     
 }

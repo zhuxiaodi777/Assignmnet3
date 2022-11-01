@@ -421,15 +421,15 @@ public class UserView extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (DoctorProfile ep : doctorHistory.getDoctorhistory()){
-            Object[] row = new Object[7]; 
+            Object[] row = new Object[6]; 
             //        private String name;
             row[0] = ep;
-            row[1] = ep.getName();
-            row[2] = ep.getCommunity();
-            row[3] = ep.getCity();
-            row[4] = ep.getHospital();
-            row[5] = ep.getEmail();
-            row[6] = ep.getSpecialty();
+//            row[1] = ep.getName();
+            row[1] = ep.getCommunity();
+            row[2] = ep.getCity();
+            row[3] = ep.getHospital();
+            row[4] = ep.getEmail();
+            row[5] = ep.getSpecialty();
             
             model.addRow(row);
         }
