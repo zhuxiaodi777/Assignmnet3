@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.CommHistory;
 import model.CommProfile;
+import model.HospitalHistory;
 
 
 public class CommLoginJPanel extends javax.swing.JPanel {
@@ -16,10 +17,12 @@ public class CommLoginJPanel extends javax.swing.JPanel {
     private CommHistory commDirectory;
     private CommProfile comm;
     private JPanel userProcessContainer; 
-    public CommLoginJPanel(JPanel upc, CommHistory ds) {
+    HospitalHistory hospitalHistory ;
+    public CommLoginJPanel(JPanel upc, CommHistory ds,HospitalHistory hh) {
         initComponents();
         userProcessContainer = upc;
         commDirectory=ds;
+        hospitalHistory =hh;
         
     }
     
@@ -140,7 +143,7 @@ if(comm== null){
 } else{
 txtPassword.setText("");
 txtEmail.setText("");
-  CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, comm);
+  CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, hospitalHistory);
         userProcessContainer.add("CommWorkAreaJPanel", swajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

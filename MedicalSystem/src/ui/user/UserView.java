@@ -34,7 +34,7 @@ public class UserView extends javax.swing.JPanel {
     Order currentOrder;
     MasterOrderList masterOrderList;
     RecordHistory recordhistory;
-    Record record;
+    
     public UserView(JPanel upc,DoctorHistory ds,RecordHistory rh) {
         initComponents();
         userProcessContainer = upc;
@@ -385,7 +385,7 @@ public class UserView extends javax.swing.JPanel {
 
 //        DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
 //        int row=tblUserRecord.getSelectedRow();
-        record = recordhistory.addrecord();
+        Record record = recordhistory.addrecord();
 //        
         record.setName(item.getDoctorProfile().getName());
         record.setID(item.getDoctorProfile().getID());

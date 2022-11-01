@@ -19,17 +19,15 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
      * Creates new form HospitalInfoJPanel
      */
 
-   HospitalHistory hospitalHistory ;
+    HospitalHistory hospitalHistory ;
     HospitalProfile hospitalProfile;
     private JPanel userProcessContainer;
-    HospitalProfile hospital;
-CommProfile comm;
-    public HospitalInfoJPanel(JPanel upc, HospitalProfile d,CommProfile comm) {
+    CommProfile comm;
+    public HospitalInfoJPanel(JPanel upc, HospitalHistory hh) {
         initComponents();
         userProcessContainer=upc;
-        this.hospital=d;
-       this.comm = comm;
-        this.userProcessContainer=userProcessContainer;
+        hospitalHistory= hh;
+        
 
     }
 
@@ -414,7 +412,7 @@ CommProfile comm;
 
 
         // TODO add your handling code here:
-   ManageHospitalRecordJPanel mpcjp = new ManageHospitalRecordJPanel(userProcessContainer, comm);
+        ManageHospitalRecordJPanel mpcjp = new ManageHospitalRecordJPanel(userProcessContainer, hospitalHistory);
         userProcessContainer.add("ManageHospitalRecordJPanel", mpcjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

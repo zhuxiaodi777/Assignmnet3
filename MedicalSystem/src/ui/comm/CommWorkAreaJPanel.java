@@ -8,6 +8,8 @@ import ui.comm.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.CommProfile;
+import model.HospitalHistory;
+import model.HospitalProfile;
 
 /**
  *
@@ -20,10 +22,12 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
      */
    private JPanel userProcessContainer;
     CommProfile comm;
-    public CommWorkAreaJPanel(JPanel userProcessContainer, CommProfile comm) {
+    HospitalHistory hospitalHistory ;
+    public CommWorkAreaJPanel(JPanel userProcessContainer, HospitalHistory hh) {
         initComponents();
         this.comm=comm;
         this.userProcessContainer=userProcessContainer;
+        hospitalHistory =hh;
     }
 
     /**
@@ -126,10 +130,10 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
 
     private void HospitalInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HospitalInfoBtnActionPerformed
         // TODO add your handling code here:
-//        HospitalInfoJPanel mpcjp = new HospitalInfoJPanel(userProcessContainer, comm);
-//        userProcessContainer.add("HospitalInfoJPanel", mpcjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        HospitalInfoJPanel mpcjp = new HospitalInfoJPanel(userProcessContainer, hospitalHistory);
+        userProcessContainer.add("HospitalInfoJPanel", mpcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 //       
 
 

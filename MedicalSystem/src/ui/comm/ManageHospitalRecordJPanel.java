@@ -29,10 +29,10 @@ private DefaultTableModel model;
    HospitalHistory HospitalHistory;
     HospitalProfile hospital;
     
-    public ManageHospitalRecordJPanel(JPanel upc, CommProfile d) {
+    public ManageHospitalRecordJPanel(JPanel upc, HospitalHistory hh) {
         initComponents();
         userProcessContainer=upc;
-        comm=d;
+        HospitalHistory=hh;
          populateHospitalTable();
       //  refreshTable();
     }

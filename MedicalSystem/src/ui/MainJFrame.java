@@ -12,6 +12,7 @@ import model.DoctorHistory;
 import model.DoctorProfile;
 import model.CommHistory;
 import model.CommProfile;
+import model.HospitalHistory;
 import model.UserHistory;
 import ui.admin.AdminJPanel;
 import ui.comm.CommLoginJPanel;
@@ -37,7 +38,7 @@ public class MainJFrame extends javax.swing.JFrame {
         CommProfile comm;
         RecordHistory recordhistory;
     private AdminHistory adminDirectory;
-    
+    HospitalHistory hospitalHistory;
     public MainJFrame() {
         initComponents();
         doctor = new DoctorProfile();
@@ -160,7 +161,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
 ////      
 //splitPane.setRightComponent(commJPanel);
-        CommLoginJPanel ls = new CommLoginJPanel(userProcessContainer,commHistory);
+        CommLoginJPanel ls = new CommLoginJPanel(userProcessContainer,commHistory, hospitalHistory);
         userProcessContainer.add("CommLoginJPanel", ls);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
