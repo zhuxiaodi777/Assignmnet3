@@ -343,7 +343,7 @@ public class DoctorRegisterWorkAreaJPanel extends javax.swing.JPanel {
                 }
             }    
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Check the format of the name!");
+            JOptionPane.showMessageDialog(null, "Check the format of the id!");
             return;
         }
         

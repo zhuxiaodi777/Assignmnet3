@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.AdminHistory;
 import model.AdminProfile;
+import model.DoctorHistory;
 
 /**
  *
@@ -20,14 +21,15 @@ public class AdminJPanel extends javax.swing.JPanel {
     private AdminHistory adminDirectory;
     private AdminProfile admin;
     private JPanel userProcessContainer; 
-
+    DoctorHistory doctorHistory;
     /**
      * Creates new form ComJPanel
      */
-   public AdminJPanel(JPanel upc, AdminHistory ds) {
+   public AdminJPanel(JPanel upc, AdminHistory ds,DoctorHistory dh) {
         initComponents();
         userProcessContainer = upc;
         adminDirectory=ds;
+        doctorHistory =dh;
         
     }
 
@@ -79,26 +81,26 @@ public class AdminJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(188, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(jUsernameField)
                     .addComponent(jBTlogin)
-                    .addComponent(jPasswordField))
-                .addGap(89, 89, 89))
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jUsername))
@@ -108,7 +110,7 @@ public class AdminJPanel extends javax.swing.JPanel {
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jBTlogin)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,13 +137,8 @@ JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
 //     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
 //     layout.next(userProcessContainer);
 
-// AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, admin);
-//     userProcessContainer.add("AdminAccountJPanel", ass);
-//     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//     layout.next(userProcessContainer);
-
- AdminManageAccountJPanel ama = new AdminManageAccountJPanel(userProcessContainer, admin);
-     userProcessContainer.add("AdminManageAccountJPanel", ama);
+ AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, doctorHistory);
+     userProcessContainer.add("AdminAccountJPanel", ass);
      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
      layout.next(userProcessContainer);
 
