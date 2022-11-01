@@ -2,28 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.comm;
+package doctor.UI;
 
-import ui.comm.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import model.CommProfile;
+import model.DoctorProfile;
 
 /**
  *
  * @author yongxingnie
  */
-public class CommWorkAreaJPanel extends javax.swing.JPanel {
+public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     private JPanel userProcessContainer;
-    CommProfile comm;
-    public CommWorkAreaJPanel(JPanel userProcessContainer, CommProfile comm) {
+    DoctorProfile doctor;
+    public DoctorWorkAreaJPanel(JPanel upc, DoctorProfile d) {
         initComponents();
-        this.comm=comm;
-        this.userProcessContainer=userProcessContainer;
+        doctor=d;
+        userProcessContainer=upc;
     }
 
     /**
@@ -135,19 +134,19 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
 
     private void PersonalInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonalInfoBtnActionPerformed
         // TODO add your handling code here:
-//        PersonalInfoJPanel mpcjp = new PersonalInfoJPanel(userProcessContainer, doctor);
-//        userProcessContainer.add("ManageProductCatalogJPanel", mpcjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PersonalInfoJPanel mpcjp = new PersonalInfoJPanel(userProcessContainer, doctor);
+        userProcessContainer.add("ManageProductCatalogJPanel", mpcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_PersonalInfoBtnActionPerformed
 
     private void ViewPatientRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPatientRecordsActionPerformed
         // TODO add your handling code here:
-//        ManagePatientsRecordJPanel mpcjp = new ManagePatientsRecordJPanel(userProcessContainer, doctor);
-//        userProcessContainer.add("ManagepatientsRecordJPanel", mpcjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ManagePatientsRecordJPanel mpcjp = new ManagePatientsRecordJPanel(userProcessContainer, doctor);
+        userProcessContainer.add("ManagepatientsRecordJPanel", mpcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_ViewPatientRecordsActionPerformed
 
 
