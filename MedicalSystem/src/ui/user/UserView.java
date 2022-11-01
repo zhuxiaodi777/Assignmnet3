@@ -34,7 +34,7 @@ public class UserView extends javax.swing.JPanel {
     Order currentOrder;
     MasterOrderList masterOrderList;
     RecordHistory recordhistory;
-    
+    Record ep;
     public UserView(JPanel upc,DoctorHistory ds,RecordHistory rh) {
         initComponents();
         userProcessContainer = upc;
@@ -374,16 +374,24 @@ public class UserView extends javax.swing.JPanel {
 
     private void jbtDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDoneActionPerformed
         // TODO add your handling code here:
-       
-        masterOrderList.addNewOrder(currentOrder);
-        currentOrder = new Order();
-        JOptionPane.showMessageDialog(this,"Record finished");
+       int selectedRowIndex = tblUserRecord.getSelectedRow();
+        OrderItem item = (OrderItem) tblUserRecord.getValueAt(selectedRowIndex, 0);
+//        masterOrderList.addNewOrder(currentOrder);
+//        currentOrder = new Order();
+//        JOptionPane.showMessageDialog(this,"Record finished");
 
 //        DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
 //        int row=tblUserRecord.getSelectedRow();
-//        Record ep = recordhistory.addrecord();
+        ep = recordhistory.addrecord();
 //        
-//        ep.setName(model.getValueAt(row, 0).toString());
+        ep.setName(item.getDoctorProfile().getName());
+        ep.setCommunity(item.getDoctorProfile().getCommunity());
+        ep.setCity(item.getDoctorProfile().getCity());
+        ep.setHospital(item.getDoctorProfile().getHospital());
+        ep.setEmail(item.getDoctorProfile().getEmail());
+        ep.setSpecialty(item.getDoctorProfile().getSpecialty());
+        ep.setRecordDate(item.getRecordDate());
+        
 //        ep.setCommunity(model.getValueAt(row, 1).toString());
 //        ep.setCity(model.getValueAt(row, 2).toString());
 //        ep.setHospital(model.getValueAt(row, 3).toString());

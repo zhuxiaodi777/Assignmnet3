@@ -21,11 +21,11 @@ public class Record {
     private String specialty;
     private String password;
     
-    private EncounterHistory encounterHistory;
-    
-    public Record(){
-        encounterHistory=new EncounterHistory();
-    }
+//    private EncounterHistory encounterHistory;
+//    
+//    public Record(){
+//        encounterHistory=new EncounterHistory();
+//    }
 
     public String getName() {
         return name;
@@ -99,13 +99,13 @@ public class Record {
         this.password = password;
     }
 
-    public EncounterHistory getEncounterHistory() {
-        return encounterHistory;
-    }
-
-    public void setEncounterHistory(EncounterHistory encounterHistory) {
-        this.encounterHistory = encounterHistory;
-    }
+//    public EncounterHistory getEncounterHistory() {
+//        return encounterHistory;
+//    }
+//
+//    public void setEncounterHistory(EncounterHistory encounterHistory) {
+//        this.encounterHistory = encounterHistory;
+//    }
 
     @Override
     public String toString(){

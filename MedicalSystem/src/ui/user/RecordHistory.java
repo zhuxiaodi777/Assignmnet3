@@ -13,7 +13,7 @@ import java.util.List;
  * @author yongxingnie
  */
 public class RecordHistory {
-    private List<Record> recordhistory;
+    private ArrayList<Record> recordhistory;
     
     public RecordHistory(){
         recordhistory=new ArrayList<Record>();
@@ -23,7 +23,7 @@ public class RecordHistory {
         return recordhistory;
     }
 
-    public void setRecordhistory(List<Record> recordhistory) {
+    public void setRecordhistory(ArrayList<Record> recordhistory) {
         this.recordhistory = recordhistory;
     }
 
