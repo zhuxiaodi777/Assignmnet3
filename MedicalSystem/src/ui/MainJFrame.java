@@ -39,6 +39,7 @@ public class MainJFrame extends javax.swing.JFrame {
         doctor = new DoctorProfile();
         doctorDirectory= new DoctorHistory();
         userHistory=new UserHistory();
+        commHistory=new CommHistory();
     
 
 //        setSize(830,600);

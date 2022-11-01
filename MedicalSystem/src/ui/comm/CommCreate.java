@@ -23,12 +23,12 @@ public class CommCreate extends javax.swing.JPanel {
     CommHistory commHistory ;
     CommProfile commprofile;
     private JPanel userProcessContainer;
-    public CommCreate(JPanel userProcessContainer,CommHistory commHistory) {
+    public CommCreate(JPanel upc,CommHistory ch) {
        
         initComponents();
         
-        this.commHistory= commHistory;
-        this.userProcessContainer =userProcessContainer;
+        commHistory= ch;
+        userProcessContainer =upc;
         
     }
 

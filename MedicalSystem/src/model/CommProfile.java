@@ -17,8 +17,14 @@ public class CommProfile {
     private String EmailAddress;
     private String Hospital;
     private String Address;
+    private static int count=0;
 
-// columns is pending 
+// columns is pending
+
+    public CommProfile() {
+        count++;
+    }
+    
 
     public String getCommName() {
         return CommName;
