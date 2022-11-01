@@ -4,7 +4,7 @@
  */
 package ui.admin;
 
-import ui.admin.AdminModifieyJPanel;
+
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -141,6 +141,7 @@ JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
      userProcessContainer.add("AdminAccountJPanel", ass);
      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
      layout.next(userProcessContainer);
+
 
 }
 else {

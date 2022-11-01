@@ -45,12 +45,21 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
     DoctorHistory doctorHistory;
     DoctorProfile doctor;
     private DefaultTableModel model;
+   UserHistory userHistory;
+    UserProfile user;
     public AdminAccountJPanel(JPanel upc,DoctorHistory dh) {
         initComponents();
         userProcessContainer = upc;
         doctorHistory = dh;
-        
         populateDoctorTable();
+  
+    }
+
+public AdminAccountJPanel(JPanel upc,UserHistory dh) {
+        initComponents();
+        userProcessContainer = upc;
+        userHistory = dh;  
+        populateUserTable();
 
    
     }
@@ -79,6 +88,17 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtcommunity = new javax.swing.JTextField();
         txtcity = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblUser = new javax.swing.JTable();
+        jbtDelete1 = new javax.swing.JButton();
+        jbtUpdateDate1 = new javax.swing.JButton();
+        txtname1 = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtEmailAddress = new javax.swing.JTextField();
+        txtGender = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtSearch1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -184,28 +204,105 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblUser.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Age", "Gender", "EmailAddress", "email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUserMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblUser);
+
+        jbtDelete1.setText("Delete");
+        jbtDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtDelete1ActionPerformed(evt);
+            }
+        });
+
+        jbtUpdateDate1.setText("UpdateDate");
+        jbtUpdateDate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtUpdateDate1ActionPerformed(evt);
+            }
+        });
+
+        txtname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtname1ActionPerformed(evt);
+            }
+        });
+
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+
+        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailAddressActionPerformed(evt);
+            }
+        });
+
+        txtGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGenderActionPerformed(evt);
+            }
+        });
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
+        txtSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearch1ActionPerformed(evt);
+            }
+        });
+        txtSearch1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearch1KeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("search");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 664, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnBack)
-                .addGap(30, 30, 30))
+                .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)
+                        .addGap(99, 99, 99)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,13 +319,41 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
                         .addComponent(jbtUpdateDate)
                         .addGap(18, 18, 18)
                         .addComponent(jbtDelete)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 37, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(txtname1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(jbtUpdateDate1)
+                .addGap(18, 18, 18)
+                .addComponent(jbtDelete1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,9 +374,25 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(btnBack)
-                .addGap(110, 110, 110))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtUpdateDate1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -377,6 +518,105 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcityActionPerformed
 
+    private void tblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserMouseClicked
+        // TODO add your handling code here:
+        //鼠标点击选中表格中一行信息可像是在文本字段中。
+        DefaultTableModel model=(DefaultTableModel) tblUser.getModel();
+        //定义变量row为鼠标点击的行数。
+        int row=tblUser.getSelectedRow();
+        //函数getValueAt返回要查询的行和列处单元格的属性值
+
+        txtname.setText(model.getValueAt(row, 0).toString());
+        txtAge.setText(model.getValueAt(row, 1).toString());
+        txtGender.setText(model.getValueAt(row, 2).toString());
+        txtEmailAddress.setText(model.getValueAt(row, 3).toString());
+        txtPassword.setText(model.getValueAt(row, 4).toString());
+
+        //                ImageIcon icon = new ImageIcon(txtPhoto.getText());
+        //                Image image = icon.getImage();
+        //                lblPhoto.setIcon(icon);
+    }//GEN-LAST:event_tblUserMouseClicked
+
+    private void jbtDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDelete1ActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRowIndex = tblUser.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
+        UserProfile se = (UserProfile) model.getValueAt(selectedRowIndex, 0);
+
+        userHistory.deleteUser(se);
+
+        JOptionPane.showMessageDialog(this, "User Profile Deleted");
+
+        populateUserTable();
+    }//GEN-LAST:event_jbtDelete1ActionPerformed
+
+    private void jbtUpdateDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateDate1ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+
+        DefaultTableModel model=(DefaultTableModel)tblUser.getModel();
+        int row=tblUser.getSelectedRow();
+
+        if(txtname1.getText().length()==0
+            || txtAge.getText().length()==0
+            || txtGender.getText().length()==0
+            || txtEmailAddress.getText().length()==0
+            || txtPassword.getText().length()==0
+            //|| txtspecialty.getText().length()==0
+        ){
+            JOptionPane.showMessageDialog(this, "Check the format!");
+            return;
+        }
+
+        model.setValueAt(txtname1.getText(), row, 0);
+        model.setValueAt(txtAge.getText(), row, 1);
+        model.setValueAt(txtGender.getText(), row, 2);
+        model.setValueAt(txtEmailAddress.getText(), row, 3);
+        model.setValueAt(txtPassword.getText(), row, 4);
+
+        txtname1.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtEmailAddress.setText("");
+        txtPassword.setText("");
+
+    }//GEN-LAST:event_jbtUpdateDate1ActionPerformed
+
+    private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtname1ActionPerformed
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
+
+    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailAddressActionPerformed
+
+    private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGenderActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearch1ActionPerformed
+
+    private void txtSearch1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearch1KeyReleased
+
 //public void dispalyEmployee() {
 //DefaultTableModel model =(DefaultTableModel) tblEmployee.getModel();
 // int selectedRowIndex = tblEmployee.getSelectedRow();
@@ -403,16 +643,27 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbsearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtDelete;
+    private javax.swing.JButton jbtDelete1;
     private javax.swing.JButton jbtUpdateDate;
+    private javax.swing.JButton jbtUpdateDate1;
     private javax.swing.JTable tblDoctor;
+    private javax.swing.JTable tblUser;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtEmailAddress;
+    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtcity;
     private javax.swing.JTextField txtcommunity;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txthospital;
     private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtname1;
     private javax.swing.JTextField txtspecialty;
     // End of variables declaration//GEN-END:variables
 
@@ -444,6 +695,25 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
         trs.setRowFilter(RowFilter.regexFilter(str,cmbsearch.getSelectedIndex()));
     }
 
+    private void populateUserTable(){
+        DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
+        model.setRowCount(0);
+//        cmb  
+        for (UserProfile ep :userHistory.getUserHistory()) {
+            Object[] row = new Object[7];
+            
+            row[0] = ep;
+//            row[2] = ep.getDoctorProfile().getName();
+            row[1] = ep.getName();
+            row[2] = ep.getAge();
+            row[3] = ep.getGender();
+            row[4] = ep.getEmailAddress();
+            row[5] = ep.getPassword();
+            model.addRow(row);
+        }
+        
+        
+     }   
 
 
 }
