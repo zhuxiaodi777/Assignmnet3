@@ -4,31 +4,33 @@
  */
 package ui.admin;
 
+import ui.admin.AdminModifieyJPanel;
 import java.awt.CardLayout;
-import ui.comm.*;
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
+import model.AdminHistory;
+import model.AdminProfile;
+
 /**
  *
  * @author Clark
  */
 public class AdminJPanel extends javax.swing.JPanel {
 
-JPanel userProcessContainer;
-//import java.awt.Toolkit;
-//import java.awt.event.WindowEvent;
-//import javax.swing.JOptionPane;
-
+    private AdminHistory adminDirectory;
+    private AdminProfile admin;
+    private JPanel userProcessContainer; 
 
     /**
      * Creates new form ComJPanel
      */
-    public AdminJPanel() {
+   public AdminJPanel(JPanel upc, AdminHistory ds) {
         initComponents();
+        userProcessContainer = upc;
+        adminDirectory=ds;
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +45,6 @@ JPanel userProcessContainer;
         jUsername = new javax.swing.JLabel();
         jPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jBTcancel = new javax.swing.JButton();
         jBTlogin = new javax.swing.JButton();
         jPasswordField = new javax.swing.JPasswordField();
 
@@ -64,13 +65,6 @@ JPanel userProcessContainer;
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Login  Here !!");
-
-        jBTcancel.setText("Cancel");
-        jBTcancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBTcancelActionPerformed(evt);
-            }
-        });
 
         jBTlogin.setText("Login in");
         jBTlogin.addActionListener(new java.awt.event.ActionListener() {
@@ -94,11 +88,8 @@ JPanel userProcessContainer;
                     .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jUsernameField)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBTlogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jBTcancel))
+                    .addComponent(jUsernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(jBTlogin)
                     .addComponent(jPasswordField))
                 .addGap(89, 89, 89))
         );
@@ -116,9 +107,7 @@ JPanel userProcessContainer;
                     .addComponent(jPassword)
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBTlogin)
-                    .addComponent(jBTcancel))
+                .addComponent(jBTlogin)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -126,14 +115,6 @@ JPanel userProcessContainer;
     private void jUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jUsernameFieldActionPerformed
-
-    private void jBTcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTcancelActionPerformed
-  userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jBTcancelActionPerformed
 
     private void jBTloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTloginActionPerformed
         // TODO add your handling code here:
@@ -147,9 +128,12 @@ if(password.contains("admin123") && username.contains("admin123"))
 jPasswordField.setText("");
 jUsernameField.setText("");
 JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
-//close();
-//welcome w =new welcome();
-//w.setVisible(true);
+    
+
+ AdminModifieyJPanel ass = new AdminModifieyJPanel(userProcessContainer, admin);
+     userProcessContainer.add("AdminModifyJPanel", ass);
+     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+     layout.next(userProcessContainer);
 
 }
 else {
@@ -159,16 +143,10 @@ jPasswordField.setText("");
 jUsernameField.setText("");
 }
 
-
-
-
-
-
     }//GEN-LAST:event_jBTloginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBTcancel;
     private javax.swing.JButton jBTlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jPassword;
@@ -176,4 +154,6 @@ jUsernameField.setText("");
     private javax.swing.JLabel jUsername;
     private javax.swing.JTextField jUsernameField;
     // End of variables declaration//GEN-END:variables
+
+  
 }

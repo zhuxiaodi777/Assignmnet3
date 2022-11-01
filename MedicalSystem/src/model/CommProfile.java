@@ -4,14 +4,10 @@
  */
 package model;
 
-/**
- *
- * @author judy
- */
+
 public class CommProfile {
 
    
-    
     private String CommName;
     private String CommId;
     private String EmailAddress;
@@ -21,10 +17,12 @@ public class CommProfile {
 
 // columns is pending
 
+
     public CommProfile() {
         count++;
     }
     
+
 
     public String getCommName() {
         return CommName;

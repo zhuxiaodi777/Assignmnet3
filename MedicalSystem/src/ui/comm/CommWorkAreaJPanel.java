@@ -38,8 +38,7 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        PersonalInfoBtn = new javax.swing.JButton();
-        ViewPatientRecords = new javax.swing.JButton();
+        HospitalInfoBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         LogOutBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -47,24 +46,16 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setText("Welcome, Doctors!");
 
-        PersonalInfoBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        PersonalInfoBtn.setText("Manage Personal Information");
-        PersonalInfoBtn.addActionListener(new java.awt.event.ActionListener() {
+        HospitalInfoBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        HospitalInfoBtn.setText("Manage Hospital Information");
+        HospitalInfoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersonalInfoBtnActionPerformed(evt);
-            }
-        });
-
-        ViewPatientRecords.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        ViewPatientRecords.setText("View Patients Records");
-        ViewPatientRecords.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewPatientRecordsActionPerformed(evt);
+                HospitalInfoBtnActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel2.setText("Welcome, Doctors!");
+        jLabel2.setText("Welcome, again!!!");
 
         LogOutBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         LogOutBtn.setText("LogOut");
@@ -78,28 +69,23 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(LogOutBtn)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(PersonalInfoBtn)
+                        .addComponent(HospitalInfoBtn)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ViewPatientRecords)
-                        .addGap(28, 28, 28))))
+                        .addGap(26, 26, 26))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
-                .addGap(62, 62, 62)
-                .addComponent(PersonalInfoBtn)
-                .addGap(68, 68, 68)
-                .addComponent(ViewPatientRecords)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGap(87, 87, 87)
+                .addComponent(HospitalInfoBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addComponent(LogOutBtn)
                 .addGap(50, 50, 50))
         );
@@ -133,28 +119,19 @@ public class CommWorkAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PersonalInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonalInfoBtnActionPerformed
+    private void HospitalInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HospitalInfoBtnActionPerformed
         // TODO add your handling code here:
-//        PersonalInfoJPanel mpcjp = new PersonalInfoJPanel(userProcessContainer, comm);
-//        userProcessContainer.add("ManageProductCatalogJPanel", mpcjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_PersonalInfoBtnActionPerformed
-
-    private void ViewPatientRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPatientRecordsActionPerformed
-        // TODO add your handling code here:
-//        ManagePatientsRecordJPanel mpcjp = new ManagePatientsRecordJPanel(userProcessContainer, comm);
-//        userProcessContainer.add("ManagepatientsRecordJPanel", mpcjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
-    }//GEN-LAST:event_ViewPatientRecordsActionPerformed
+        HospitalInfoJPanel mpcjp = new HospitalInfoJPanel(userProcessContainer, comm);
+        userProcessContainer.add("HospitalInfoJPanel", mpcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+       
+    }//GEN-LAST:event_HospitalInfoBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton HospitalInfoBtn;
     private javax.swing.JButton LogOutBtn;
-    private javax.swing.JButton PersonalInfoBtn;
-    private javax.swing.JButton ViewPatientRecords;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

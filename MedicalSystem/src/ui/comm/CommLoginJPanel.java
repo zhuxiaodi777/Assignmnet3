@@ -129,19 +129,44 @@ public class CommLoginJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String email=txtEmail.getText();
-        String pw=txtPassword.getText();
-        comm=commDirectory.searchComm(email,pw);
-        if(comm==null){
-            JOptionPane.showMessageDialog(this, "Please input correct valiues again!");
-        }else{
-            
-        
-        CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, comm);
+     
+      
+
+String password = txtPassword.getText();
+String username = txtEmail.getText();
+//
+if(password.contains("comm123") && username.contains("comm123"))
+
+{
+txtPassword.setText("");
+txtEmail.setText("");
+
+JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
+  CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, comm);
         userProcessContainer.add("CommWorkAreaJPanel", swajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        }     
+        //}  
+
+}
+else {
+//JOptionPane.showMessageDialog(null,"username or password is wrong,please input right one","wrong pass",JOptionPane,ERROR_MESSAGE);
+JOptionPane.showMessageDialog(null,"username or password is wrong,please input right one");
+txtPassword.setText("");
+txtEmail.setText("");
+}
+
+
+
+
+
+
+
+
+
+
+
+   
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed

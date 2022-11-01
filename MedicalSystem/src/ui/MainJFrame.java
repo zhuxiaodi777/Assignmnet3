@@ -7,6 +7,7 @@ package ui;
 
 import doctor.UI.DoctorLoginJPanel;
 import java.awt.CardLayout;
+import model.AdminHistory;
 import model.DoctorHistory;
 import model.DoctorProfile;
 import model.CommHistory;
@@ -33,12 +34,14 @@ public class MainJFrame extends javax.swing.JFrame {
     DoctorProfile doctor;
         CommHistory commHistory ;
         CommProfile comm;
+    private AdminHistory adminDirectory;
     
     public MainJFrame() {
         initComponents();
         doctor = new DoctorProfile();
         doctorDirectory= new DoctorHistory();
         userHistory=new UserHistory();
+       comm = new CommProfile();
         commHistory=new CommHistory();
     
 
@@ -180,11 +183,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
         // TODO add your handling code here:
-  AdminJPanel adminJPanel  = new  AdminJPanel();
-// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
-//      
-splitPane.setRightComponent(adminJPanel);
-
+//  AdminJPanel adminJPanel  = new  AdminJPanel();
+//// //ViewJPanel viewJPanel  = new  ViewJPanel(emp);
+////      
+//splitPane.setRightComponent(adminJPanel);
+  AdminJPanel ls = new AdminJPanel(userProcessContainer,adminDirectory);
+        userProcessContainer.add("AdminJPanel", ls);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnAdminActionPerformed
 

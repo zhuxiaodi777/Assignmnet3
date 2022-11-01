@@ -192,19 +192,132 @@ public class CommCreate extends javax.swing.JPanel {
         // TODO add your handling code here:
         //        double temperature = Double.parseDouble(txtName.getText());
 
-        if (
-            txtCommName.getText().length() == 0
-                        || txtCommID.getText().length() == 0
-                        || txtHospital.getText().matches("^\\d{1,}$") == false
-                        || txtAddress.getText().length() == 0
-//                        || txtCellPhoneNumber.getText().matches("^\\d{2,}$") == false
-                        || txtEmailAddress.getText().length() == 0
-                        || txtPassword.getText().length() == 0         
-        ) {
-            JOptionPane.showMessageDialog(this, "Please enter the correct format");
+//        if (
+//            txtCommName.getText().length() == 0
+//                        || txtCommID.getText().length() == 0
+//                        || txtHospital.getText().matches("^\\d{1,}$") == false
+//                        || txtAddress.getText().length() == 0
+////                        || txtCellPhoneNumber.getText().matches("^\\d{2,}$") == false
+//                        || txtEmailAddress.getText().length() == 0
+//                        || txtPassword.getText().length() == 0         
+//        ) {
+//            JOptionPane.showMessageDialog(this, "Please enter the correct format");
+//            return;
+//        }
+        
+  String CommName=null;
+        
+        try{
+            CommName=txtCommName.getText();
+            char[] arr=CommName.toCharArray();
+            if(arr.length==0){
+                JOptionPane.showMessageDialog(this, "The name cannot be null!");
+                return;
+            }
+            for(char c: arr){
+                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
+                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
+                    return;
+                }
+            }
+            for(CommProfile d:commHistory.getCommhistory()) {
+                if (commprofile.getCommName().equals(CommName)) {
+                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the name!");
             return;
         }
-        
+
+ String CommID=null;
+        try{
+            CommID=txtCommID.getText();
+            char[] arr=CommID.toCharArray();
+            if(arr.length!=7){
+                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
+                return;
+            }
+            if(CommID.matches("[0-9]*")==false){
+                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
+                return;
+            }
+            
+            for(CommProfile d:commHistory.getCommhistory()) {
+                if (commprofile.getCommId().equals(CommID)) {
+                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format of the name!");
+            return;
+        }
+
+
+String hospital=null;
+        try{
+            hospital=txtHospital.getText();
+           
+            if(hospital.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a hospital");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+
+String Address=null;
+        try{
+            Address=txtAddress.getText();
+           
+            if(Address.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a hospital");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+
+
+ String EmailAddress=null;
+        try{
+            EmailAddress=txtEmailAddress.getText();
+           
+            if((EmailAddress.contains("@"))==false||EmailAddress.contains(".")==false){
+               JOptionPane.showMessageDialog(this, "Please input a correct email!");
+                return; 
+            }
+          
+            for(CommProfile d:commHistory.getCommhistory()) {
+                if (commprofile.getEmailAddress().equals(EmailAddress)) {
+                    JOptionPane.showMessageDialog(this, "The email has already been registered!");
+                    return;
+                }
+            }    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+String Password=null;
+        try{
+            Password=txtPassword.getText();
+           
+            if(Password.length()==0){
+               JOptionPane.showMessageDialog(this, "Please input a password");
+                return; 
+            }
+             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Check the format!");
+            return;
+        }
+
         commprofile = commHistory.addProfile();
         
         commprofile.setCommName(txtCommName.getText());

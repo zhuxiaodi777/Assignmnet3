@@ -29,12 +29,8 @@
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jUsernameField" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jBTlogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                      <Component id="jBTcancel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jUsernameField" pref="152" max="32767" attributes="0"/>
+                  <Component id="jBTlogin" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jPasswordField" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
@@ -57,10 +53,7 @@
                   <Component id="jPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBTlogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBTcancel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jBTlogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -98,14 +91,6 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Admin Login  Here !!"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jBTcancel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBTcancelActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBTlogin">
       <Properties>
