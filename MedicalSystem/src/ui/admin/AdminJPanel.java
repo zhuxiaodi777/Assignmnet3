@@ -130,8 +130,13 @@ jUsernameField.setText("");
 JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
     
 
- AdminModifieyJPanel ass = new AdminModifieyJPanel(userProcessContainer, admin);
-     userProcessContainer.add("AdminModifyJPanel", ass);
+// AdminModifieyJPanel ass = new AdminModifieyJPanel(userProcessContainer, admin);
+//     userProcessContainer.add("AdminModifyJPanel", ass);
+//     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//     layout.next(userProcessContainer);
+
+ AdminAccountJPanel ass = new AdminAccountJPanel(userProcessContainer, admin);
+     userProcessContainer.add("AdminAccountJPanel", ass);
      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
      layout.next(userProcessContainer);
 
