@@ -34,7 +34,7 @@ public class UserView extends javax.swing.JPanel {
     Order currentOrder;
     MasterOrderList masterOrderList;
     RecordHistory recordhistory;
-    Record ep;
+    Record record;
     public UserView(JPanel upc,DoctorHistory ds,RecordHistory rh) {
         initComponents();
         userProcessContainer = upc;
@@ -43,6 +43,7 @@ public class UserView extends javax.swing.JPanel {
 //        this.doctorProfile= doctorProfile;
         currentOrder= new Order();
         recordhistory= rh;
+        
         populateTable();
         populateCartTable();
     }
@@ -172,7 +173,7 @@ public class UserView extends javax.swing.JPanel {
             }
         });
 
-        jbtDone.setText("Done");
+        jbtDone.setText("done");
         jbtDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtDoneActionPerformed(evt);
@@ -193,7 +194,7 @@ public class UserView extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jbtDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtDone)
+                        .addComponent(jbtDone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBack)
                         .addGap(45, 45, 45))
@@ -376,21 +377,25 @@ public class UserView extends javax.swing.JPanel {
         // TODO add your handling code here:
        int selectedRowIndex = tblUserRecord.getSelectedRow();
         OrderItem item = (OrderItem) tblUserRecord.getValueAt(selectedRowIndex, 0);
+//        DoctorProfile doctorProfile = (DoctorProfile) tblUserRecord.getValueAt(selectedRowIndex, 0);
+//        OrderItem item = currentOrder.findDoctor(doctorProfile);
 //        masterOrderList.addNewOrder(currentOrder);
 //        currentOrder = new Order();
 //        JOptionPane.showMessageDialog(this,"Record finished");
 
 //        DefaultTableModel model = (DefaultTableModel) tblUserRecord.getModel();
 //        int row=tblUserRecord.getSelectedRow();
-        ep = recordhistory.addrecord();
+        record = recordhistory.addrecord();
 //        
-        ep.setName(item.getDoctorProfile().getName());
-        ep.setCommunity(item.getDoctorProfile().getCommunity());
-        ep.setCity(item.getDoctorProfile().getCity());
-        ep.setHospital(item.getDoctorProfile().getHospital());
-        ep.setEmail(item.getDoctorProfile().getEmail());
-        ep.setSpecialty(item.getDoctorProfile().getSpecialty());
-        ep.setRecordDate(item.getRecordDate());
+        record.setName(item.getDoctorProfile().getName());
+        record.setID(item.getDoctorProfile().getID());
+        record.setCommunity(item.getDoctorProfile().getCommunity());
+        record.setCity(item.getDoctorProfile().getCity());
+        record.setHospital(item.getDoctorProfile().getHospital());
+        record.setEmail(item.getDoctorProfile().getEmail());
+        record.setSpecialty(item.getDoctorProfile().getSpecialty());
+        record.setPhoto(item.getDoctorProfile().getPhoto());
+        record.setRecordDate(item.getRecordDate());
         
 //        ep.setCommunity(model.getValueAt(row, 1).toString());
 //        ep.setCity(model.getValueAt(row, 2).toString());

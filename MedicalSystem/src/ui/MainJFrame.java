@@ -15,6 +15,7 @@ import model.CommProfile;
 import model.UserHistory;
 import ui.admin.AdminJPanel;
 import ui.comm.CommLoginJPanel;
+import ui.user.RecordHistory;
 //import model.SupplierDirectory;
 //import ui.AdminRole.AdminWorkAreaJPanel;
 import ui.user.UserLogin;
@@ -34,6 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
     DoctorProfile doctor;
         CommHistory commHistory ;
         CommProfile comm;
+        RecordHistory recordhistory;
     private AdminHistory adminDirectory;
     
     public MainJFrame() {
@@ -175,7 +177,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
-        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory, doctorDirectory);
+        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory, doctorDirectory,recordhistory);
         userProcessContainer.add("UserLogin", userlogin);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
