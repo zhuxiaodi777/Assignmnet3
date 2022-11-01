@@ -282,82 +282,53 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
 
- String HospitalName=null;
-        
-        try{
-            HospitalName=txtHospitalName.getText();
-            char[] arr=HospitalName.toCharArray();
-            if(arr.length==0){
-                JOptionPane.showMessageDialog(this, "The name cannot be null!");
-                return;
-            }
-            for(char c: arr){
-                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
-                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
-                    return;
-                }
-            }
-            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
-                if (hospitalProfile.getHospitalName().equals(HospitalName)) {
-                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
-                    return;
-                }
-            }    
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Check the format of the name!");
-            return;
-        }
-
- String CommID=null;
-        try{
-            CommID=txtCommID.getText();
-            char[] arr=CommID.toCharArray();
-            if(arr.length!=7){
-                JOptionPane.showMessageDialog(this, "The ID length should be 7!");
-                return;
-            }
-            if(CommID.matches("[0-9]*")==false){
-                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
-                return;
-            }
-            
-            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
-                if (hospitalProfile.getCommId().equals(CommID)) {
-                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
-                    return;
-                }
-            }    
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Check the format of the id!");
-            return;
-        }
-//
-//
-//String hospital=null;
+// String HospitalName=null;
+//        
 //        try{
-//            hospital=txtHospital.getText();
-//           
-//            if(hospital.length()==0){
-//               JOptionPane.showMessageDialog(this, "Please input a hospital");
-//                return; 
+//            HospitalName=txtHospitalName.getText();
+//            char[] arr=HospitalName.toCharArray();
+//            if(arr.length==0){
+//                JOptionPane.showMessageDialog(this, "The name cannot be null!");
+//                return;
 //            }
-//             
+//            for(char c: arr){
+//                if(!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))){
+//                    JOptionPane.showMessageDialog(this, "The name should be alpha!");
+//                    return;
+//                }
+//            }
+//            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
+//                if (hospitalProfile.getHospitalName().equals(HospitalName)) {
+//                    JOptionPane.showMessageDialog(this, "The name has been already been registered!");
+//                    return;
+//                }
+//            }    
 //        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Check the format!");
+//            JOptionPane.showMessageDialog(null, "Check the format of the name!");
 //            return;
 //        }
-//
-//String Address=null;
+////
+// String CommID=null;
 //        try{
-//            Address=txtAddress.getText();
-//           
-//            if(Address.length()==0){
-//               JOptionPane.showMessageDialog(this, "Please input a hospital");
-//                return; 
+//            CommID=txtCommID.getText();
+//            char[] arr=CommID.toCharArray();
+//            if(arr.length!=4){
+//                JOptionPane.showMessageDialog(this, "The ID length should be 4!");
+//                return;
 //            }
-//             
+//            if(CommID.matches("[0-9]*")==false){
+//                JOptionPane.showMessageDialog(this, "The ID should only be numbers!");
+//                return;
+//            }
+//            
+//            for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
+//                if (hospitalProfile.getCommId().equals(CommID)) {
+//                    JOptionPane.showMessageDialog(this, "The ID is already used by other registers!");
+//                    return;
+//                }
+//            }    
 //        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "Check the format!");
+//            JOptionPane.showMessageDialog(null, "Check the format of the id!");
 //            return;
 //        }
 //
@@ -371,8 +342,8 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 //                return; 
 //            }
 //          
-//            for(CommProfile d:commHistory.getCommhistory()) {
-//                if (commprofile.getEmailAddress().equals(EmailAddress)) {
+//              for(HospitalProfile d:hospitalHistory.getHospitalhistory()) {
+//                if (hospitalProfile.getEmailAddress().equals(EmailAddress)) {
 //                    JOptionPane.showMessageDialog(this, "The email has already been registered!");
 //                    return;
 //                }
@@ -394,16 +365,34 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(null, "Check the format!");
 //            return;
 //        }
+//String Address=null;
+//        try{
+//            Address=txtAddress.getText();
+//           
+//            if(Address.length()==0){
+//               JOptionPane.showMessageDialog(this, "Please input a hospital");
+//                return; 
+//            }
+//             
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null, "Check the format!");
+//            return;
+//        }
 
 
-        hospitalProfile = hospitalHistory.addProfile();
+//
+//System.out.println("====111111111111=====");
+      HospitalProfile  hospitalProfile = hospitalHistory.addProfile();
+//System.out.println("========22222222222===========");
+
         hospitalProfile.setHospitalName(txtHospitalName.getText());
         hospitalProfile.setCommId(txtCommID.getText());
         hospitalProfile.setAddress(txtAddress.getText());
         hospitalProfile.setEmailAddress(txtEmailAddress.getText());
         hospitalProfile.setPassword(txtPassword.getText());
-        JOptionPane.showMessageDialog(this,"Registered Successful");
-
+       JOptionPane.showMessageDialog(this,"Saved Successful");
+System.out.println(txtCommID.getText());
+System.out.println("=========================");
         txtHospitalName.setText("");
         txtCommID.setText("");
         txtAddress.setText("");

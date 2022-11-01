@@ -33,7 +33,7 @@ private DefaultTableModel model;
         initComponents();
         userProcessContainer=upc;
         HospitalHistory=hh;
-         populateHospitalTable();
+        populateHospitalTable();
       //  refreshTable();
     }
     
@@ -333,7 +333,7 @@ private DefaultTableModel model;
         for (HospitalProfile ep :HospitalHistory.getHospitalhistory()) {
             Object[] row = new Object[5];
             
-            row[0] = ep.getHospitalName();
+            row[0] = ep;
             row[1] = ep.getCommId();
             row[2] = ep.getEmailAddress();
             row[3] = ep.getPassword();
