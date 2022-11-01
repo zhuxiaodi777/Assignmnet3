@@ -5,31 +5,29 @@
 package model;
 
 
-public class CommProfile {
+public class HospitalProfile {
 
    
-    private String CommName;
+    private String HospitalName;
     private String CommId;
     private String EmailAddress;
-    private String Hospital;
+    private String Password;
     private String Address;
     private static int count=0;
 
 // columns is pending
 
 
-    public CommProfile() {
+    public HospitalProfile() {
         count++;
     }
-    
 
-
-    public String getCommName() {
-        return CommName;
+    public String getHospitalName() {
+        return HospitalName;
     }
 
-    public void setCommName(String CommName) {
-        this.CommName = CommName;
+    public void setHospitalName(String HospitalName) {
+        this.HospitalName = HospitalName;
     }
 
     public String getCommId() {
@@ -44,16 +42,16 @@ public class CommProfile {
         return EmailAddress;
     }
 
-    public void setEmailAddress(String Distance) {
+    public void setEmailAddress(String EmailAddress) {
         this.EmailAddress = EmailAddress;
     }
 
-    public String getHospital() {
-        return Hospital;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setHospital(String Hospital) {
-        this.Hospital = Hospital;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     public String getAddress() {
@@ -64,15 +62,15 @@ public class CommProfile {
         this.Address = Address;
     }
 
-
-
-    public String getPassword() {
-        return Password;
+    public static int getCount() {
+        return count;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public static void setCount(int count) {
+        HospitalProfile.count = count;
     }
-    private String Password;
+    
+
+
     
 }

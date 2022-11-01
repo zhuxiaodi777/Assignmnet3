@@ -8,35 +8,36 @@ import java.util.List;
 
 
 
-public class CommHistory {
-    private List<CommProfile> commhistory;
+public class HospitalHistory {
+    private List<HospitalProfile> hospitalhistory;
     
-    public CommHistory(){
-        commhistory=new ArrayList<CommProfile>();
+    public HospitalHistory(){
+        hospitalhistory=new ArrayList<HospitalProfile>();
     }
 
-    public List<CommProfile> getCommhistory() {
-        return commhistory;
+    public List<HospitalProfile> getHospitalhistory() {
+        return hospitalhistory;
     }
 
-    public void setCommhistory(List<CommProfile> commhistory) {
-        this.commhistory = commhistory;
+    public void setHospitalhistory(List<HospitalProfile> hospitalhistory) {
+        this.hospitalhistory = hospitalhistory;
+    }
+
+   
+    public HospitalProfile addProfile(){
+        HospitalProfile hp=new HospitalProfile();
+        hospitalhistory.add(hp);
+        return hp;
     }
     
-    public CommProfile addProfile(){
-        CommProfile comm=new CommProfile();
-        commhistory.add(comm);
-        return comm;
+    public void removeHospital(HospitalProfile hospital) {
+        hospitalhistory.remove(hospital);
     }
     
-    public void removeComm(CommProfile comm) {
-        commhistory.remove(comm);
-    }
-    
-    public CommProfile searchComm(String email, String password) {
-        for (CommProfile comm : commhistory) {
-            if ((comm.getEmailAddress().equals(email))&&((comm.getPassword().equals(password)))) {
-                return comm;
+    public HospitalProfile searchHospital(String email, String password) {
+        for (HospitalProfile hospital : hospitalhistory) {
+            if ((hospital.getEmailAddress().equals(email))&&((hospital.getPassword().equals(password)))) {
+                return hospital;
             }
         }
         return null;

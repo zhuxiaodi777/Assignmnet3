@@ -23,6 +23,7 @@ public class CommProfile {
     }
     
 
+    private String Password;
 
     public String getCommName() {
         return CommName;
@@ -44,7 +45,7 @@ public class CommProfile {
         return EmailAddress;
     }
 
-    public void setEmailAddress(String Distance) {
+    public void setEmailAddress(String EmailAddress) {
         this.EmailAddress = EmailAddress;
     }
 
@@ -64,7 +65,13 @@ public class CommProfile {
         this.Address = Address;
     }
 
+    public static int getCount() {
+        return count;
+    }
 
+    public static void setCount(int count) {
+        CommProfile.count = count;
+    }
 
     public String getPassword() {
         return Password;
@@ -73,6 +80,8 @@ public class CommProfile {
     public void setPassword(String Password) {
         this.Password = Password;
     }
-    private String Password;
+
+
+
     
 }

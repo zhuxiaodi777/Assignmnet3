@@ -94,9 +94,9 @@ public class CommLoginJPanel extends javax.swing.JPanel {
                                     .addComponent(lblPassword))
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                                     .addComponent(txtPassword))
-                                .addGap(277, 277, 277))
+                                .addGap(244, 244, 244))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -134,6 +134,14 @@ public class CommLoginJPanel extends javax.swing.JPanel {
 
 String password = txtPassword.getText();
 String username = txtEmail.getText();
+comm =commDirectory.searchComm(username,password);
+if(comm== null){
+JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
+}
+
+
+
+
 //
 if(password.contains("comm123") && username.contains("comm123"))
 
@@ -141,7 +149,8 @@ if(password.contains("comm123") && username.contains("comm123"))
 txtPassword.setText("");
 txtEmail.setText("");
 
-JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
+JOptionPane.showMessageDialog(this,"username or password is wrong,please input right one!!");
+} else{
   CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, comm);
         userProcessContainer.add("CommWorkAreaJPanel", swajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -149,23 +158,6 @@ JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
         //}  
 
 }
-else {
-//JOptionPane.showMessageDialog(null,"username or password is wrong,please input right one","wrong pass",JOptionPane,ERROR_MESSAGE);
-JOptionPane.showMessageDialog(null,"username or password is wrong,please input right one");
-txtPassword.setText("");
-txtEmail.setText("");
-}
-
-
-
-
-
-
-
-
-
-
-
    
     }//GEN-LAST:event_btnLoginActionPerformed
 
