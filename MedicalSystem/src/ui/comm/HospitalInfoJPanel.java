@@ -424,14 +424,14 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 //        commprofile.setEmailAddress(txtEmailAddress.getText());
 //        commprofile.setPassword(txtPassword.getText());
 //
-//        JOptionPane.showMessageDialog(this,"Registered Successful");
-//
-//        txtCommName.setText("");
-//        txtCommID1.setText("");
-//        txtHospital.setText("");
-//        txtAddress.setText("");
-//        txtEmailAddress.setText("");
-//        txtPassword.setText("");
+        JOptionPane.showMessageDialog(this,"Registered Successful");
+
+        txtCommName.setText("");
+        txtCommID1.setText("");
+        txtHospital.setText("");
+        txtAddress.setText("");
+        txtEmailAddress.setText("");
+        txtPassword.setText("");
 
 
         // TODO add your handling code here:

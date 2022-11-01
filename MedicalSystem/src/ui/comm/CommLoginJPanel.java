@@ -136,20 +136,7 @@ String password = txtPassword.getText();
 String username = txtEmail.getText();
 comm =commDirectory.searchComm(username,password);
 if(comm== null){
-JOptionPane.showMessageDialog(this,"Admin Login successfully!! Welcome back!!");
-}
-
-
-
-
-//
-if(password.contains("comm123") && username.contains("comm123"))
-
-{
-txtPassword.setText("");
-txtEmail.setText("");
-
-JOptionPane.showMessageDialog(this,"username or password is wrong,please input right one!!");
+      JOptionPane.showMessageDialog(this,"username or password is wrong,please input right one!!");
 } else{
   CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, comm);
         userProcessContainer.add("CommWorkAreaJPanel", swajp);
