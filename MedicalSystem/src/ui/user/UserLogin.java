@@ -25,15 +25,16 @@ public class UserLogin extends javax.swing.JPanel {
     UserProfile userprofile;
     DoctorHistory doctorhistory;
 //    DoctorProfile doctorProfile;
-
+    Order orderhistory;
     DoctorHistory doctorHistory;
     RecordHistory recordhistory;
-    public UserLogin(JPanel upc,UserHistory uh, DoctorHistory ds,RecordHistory rh) {
+    public UserLogin(JPanel upc,UserHistory uh, DoctorHistory ds,RecordHistory rh, Order os) {
         initComponents();
         userProcessContainer=upc;
         userHistory = uh;
         doctorhistory=ds;
         recordhistory=rh;
+        orderhistory=os;
     }
     
     /** This method is called from within the constructor to
@@ -159,7 +160,7 @@ public class UserLogin extends javax.swing.JPanel {
 //        
 //        if ((useremail.contains("1")) && (password.contains("1"))) {
             
-            UserView uv = new UserView(userProcessContainer, doctorhistory,recordhistory);
+            UserView uv = new UserView(userProcessContainer, doctorhistory,recordhistory, orderhistory);
             userProcessContainer.add("ManageSupplierAdministrative", uv);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);

@@ -16,6 +16,7 @@ import model.HospitalHistory;
 import model.UserHistory;
 import ui.admin.AdminJPanel;
 import ui.comm.CommLoginJPanel;
+import ui.user.Order;
 import ui.user.RecordHistory;
 //import model.SupplierDirectory;
 //import ui.AdminRole.AdminWorkAreaJPanel;
@@ -36,6 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
     DoctorProfile doctor;
         CommHistory commHistory ;
         CommProfile comm;
+        Order orderhistory;
         RecordHistory recordhistory;
     private AdminHistory adminDirectory;
     HospitalHistory hospitalHistory;
@@ -46,6 +48,7 @@ public class MainJFrame extends javax.swing.JFrame {
         userHistory=new UserHistory();
        comm = new CommProfile();
         commHistory=new CommHistory();
+        orderhistory=new Order();
     
 
 //        setSize(830,600);
@@ -178,7 +181,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
-        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory, doctorDirectory,recordhistory);
+        UserLogin userlogin = new UserLogin(userProcessContainer, userHistory, doctorDirectory,recordhistory, orderhistory);
         userProcessContainer.add("UserLogin", userlogin);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

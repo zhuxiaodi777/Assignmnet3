@@ -60,8 +60,6 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
         NewEncounterBtn = new javax.swing.JButton();
         ViewDetailBtn = new javax.swing.JButton();
         DeleteBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setText("Manage Patients Records");
@@ -95,7 +93,6 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        NewEncounterBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         NewEncounterBtn.setText("New Encounter");
         NewEncounterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +100,6 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
             }
         });
 
-        ViewDetailBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         ViewDetailBtn.setText("View Details");
         ViewDetailBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,20 +107,10 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
             }
         });
 
-        DeleteBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         DeleteBtn.setText("Delete");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setText("Search");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -133,24 +119,22 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addComponent(jButton1)
                         .addGap(170, 170, 170)
-                        .addComponent(jLabel1)
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(NewEncounterBtn)
-                            .addGap(47, 47, 47)
-                            .addComponent(ViewDetailBtn)
-                            .addGap(70, 70, 70)
-                            .addComponent(DeleteBtn))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NewEncounterBtn)
+                                .addGap(47, 47, 47)
+                                .addComponent(ViewDetailBtn)
+                                .addGap(74, 74, 74)
+                                .addComponent(DeleteBtn))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,10 +143,7 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jButton1)))
@@ -173,7 +154,7 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
                     .addComponent(NewEncounterBtn)
                     .addComponent(ViewDetailBtn)
                     .addComponent(DeleteBtn))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,9 +225,7 @@ public class ManagePatientsRecordJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ViewDetailBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

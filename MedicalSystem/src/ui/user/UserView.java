@@ -35,13 +35,13 @@ public class UserView extends javax.swing.JPanel {
     MasterOrderList masterOrderList;
     RecordHistory recordhistory;
     
-    public UserView(JPanel upc,DoctorHistory ds,RecordHistory rh) {
+    public UserView(JPanel upc,DoctorHistory ds,RecordHistory rh, Order oh) {
         initComponents();
         userProcessContainer = upc;
         //doctorHistory= doctorHistory;
         doctorHistory= ds;
 //        this.doctorProfile= doctorProfile;
-        currentOrder= new Order();
+        currentOrder= oh;
         recordhistory= rh;
         
         populateTable();
