@@ -143,8 +143,8 @@ if(comm== null){
 } else{
 txtPassword.setText("");
 txtEmail.setText("");
-  CommWorkAreaJPanel swajp = new CommWorkAreaJPanel(userProcessContainer, hospitalHistory);
-        userProcessContainer.add("CommWorkAreaJPanel", swajp);
+  ManageHospitalJPanel swajp = new ManageHospitalJPanel(userProcessContainer, hospitalHistory);
+        userProcessContainer.add("ManageHospitalJPanel", swajp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         //}  
