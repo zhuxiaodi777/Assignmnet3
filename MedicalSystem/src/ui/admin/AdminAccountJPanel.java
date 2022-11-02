@@ -533,7 +533,7 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
         int row=tblUser.getSelectedRow();
         //函数getValueAt返回要查询的行和列处单元格的属性值
 
-        txtname.setText(model.getValueAt(row, 0).toString());
+        txtname1.setText(model.getValueAt(row, 0).toString());
         txtAge.setText(model.getValueAt(row, 1).toString());
         txtGender.setText(model.getValueAt(row, 2).toString());
         txtEmailAddress.setText(model.getValueAt(row, 3).toString());
@@ -686,7 +686,7 @@ public class AdminAccountJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 //        cmb  
         for (DoctorProfile ep :doctorHistory.getDoctorhistory()) {
-            Object[] row = new Object[7];
+            Object[] row = new Object[6];
             
             row[0] = ep;
 //            row[2] = ep.getDoctorProfile().getName();
