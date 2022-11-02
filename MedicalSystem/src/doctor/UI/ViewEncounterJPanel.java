@@ -145,7 +145,7 @@ public class ViewEncounterJPanel extends javax.swing.JPanel {
     private void backFunction(){
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
+        Component component = componentArray[componentArray.length - 2];
         ManagePatientsRecordJPanel managePatientsRecordJPanel = (ManagePatientsRecordJPanel) component;
         managePatientsRecordJPanel.refreshTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
